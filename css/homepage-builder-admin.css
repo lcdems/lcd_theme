@@ -1,0 +1,66 @@
+.card-settings {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
+.card-settings h3 {
+    margin: -20px -20px 20px;
+    padding: 15px 20px;
+    background: #f1f1f1;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.card-settings label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.card-settings input[type="text"],
+.card-settings input[type="url"],
+.card-settings textarea {
+    width: 100%;
+    margin-top: 5px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Widget Area Select */
+#widget_area_id {
+    max-width: 100%;
+    width: 400px;
+}
+
+/* HTML Editor */
+#html_content {
+    font-family: monospace;
+    resize: vertical;
+}
+
+/* Section Order */
+#homepage_section_order input {
+    width: 80px;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .card-settings {
+        margin-bottom: 15px;
+        padding: 15px;
+    }
+    
+    .card-settings h3 {
+        margin: -15px -15px 15px;
+        padding: 12px 15px;
+    }
+} 
