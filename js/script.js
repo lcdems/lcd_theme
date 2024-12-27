@@ -20,6 +20,12 @@
             const bufferZone = 50; // Increased buffer zone to prevent flickering
             let isScrolled = false;
             let scrollTimeout;
+
+            // Check initial scroll position
+            if (window.scrollY > scrollThreshold + bufferZone) {
+                isScrolled = true;
+                header.classList.add('scrolled');
+            }
          
             window.addEventListener('scroll', function() {
                 // Clear the timeout if it exists
