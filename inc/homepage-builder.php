@@ -67,6 +67,15 @@ function lcd_add_homepage_section_metaboxes()
     );
 
     add_meta_box(
+        'homepage_section_styling',
+        __('Section Styling', 'lcd-theme'),
+        'lcd_section_styling_metabox',
+        'homepage_section',
+        'side',
+        'default'
+    );
+
+    add_meta_box(
         'homepage_section_order',
         __('Section Order', 'lcd-theme'),
         'lcd_section_order_metabox',
@@ -321,6 +330,34 @@ function lcd_section_order_metabox($post)
 }
 
 /**
+ * Section Styling metabox callback
+ */
+function lcd_section_styling_metabox($post) {
+    wp_nonce_field('lcd_homepage_section_styling_nonce', 'homepage_section_styling_nonce');
+
+    $custom_class = get_post_meta($post->ID, '_section_custom_class', true);
+    $custom_id = get_post_meta($post->ID, '_section_custom_id', true);
+    $custom_css = get_post_meta($post->ID, '_section_custom_css', true);
+    ?>
+    <p>
+        <label for="section_custom_class"><?php _e('Custom Classes:', 'lcd-theme'); ?></label>
+        <input type="text" id="section_custom_class" name="section_custom_class" value="<?php echo esc_attr($custom_class); ?>" class="widefat">
+        <span class="description"><?php _e('Add custom classes separated by spaces', 'lcd-theme'); ?></span>
+    </p>
+    <p>
+        <label for="section_custom_id"><?php _e('Custom ID:', 'lcd-theme'); ?></label>
+        <input type="text" id="section_custom_id" name="section_custom_id" value="<?php echo esc_attr($custom_id); ?>" class="widefat">
+        <span class="description"><?php _e('Add a custom ID for the section (optional)', 'lcd-theme'); ?></span>
+    </p>
+    <p>
+        <label for="section_custom_css"><?php _e('Custom CSS:', 'lcd-theme'); ?></label>
+        <textarea id="section_custom_css" name="section_custom_css" class="widefat code" rows="6"><?php echo esc_textarea($custom_css); ?></textarea>
+        <span class="description"><?php _e('Add custom CSS for this section. Use #id or .class selectors.', 'lcd-theme'); ?></span>
+    </p>
+    <?php
+}
+
+/**
  * Save homepage section meta
  */
 function lcd_save_homepage_section_meta($post_id)
@@ -418,6 +455,29 @@ function lcd_save_homepage_section_meta($post_id)
         wp_verify_nonce($_POST['homepage_section_order_nonce'], 'lcd_homepage_section_order_nonce') &&
         isset($_POST['section_order'])) {
         update_post_meta($post_id, '_section_order', absint($_POST['section_order']));
+    }
+
+    // Save section styling if the nonce is valid
+    if (isset($_POST['homepage_section_styling_nonce']) && 
+        wp_verify_nonce($_POST['homepage_section_styling_nonce'], 'lcd_homepage_section_styling_nonce')) {
+        
+        // Save custom class
+        if (isset($_POST['section_custom_class'])) {
+            $custom_class = sanitize_text_field($_POST['section_custom_class']);
+            update_post_meta($post_id, '_section_custom_class', $custom_class);
+        }
+
+        // Save custom ID
+        if (isset($_POST['section_custom_id'])) {
+            $custom_id = sanitize_html_class($_POST['section_custom_id']);
+            update_post_meta($post_id, '_section_custom_id', $custom_id);
+        }
+
+        // Save custom CSS
+        if (isset($_POST['section_custom_css'])) {
+            $custom_css = sanitize_textarea_field($_POST['section_custom_css']);
+            update_post_meta($post_id, '_section_custom_css', $custom_css);
+        }
     }
 }
 add_action('save_post_homepage_section', 'lcd_save_homepage_section_meta');

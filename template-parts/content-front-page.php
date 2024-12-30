@@ -87,15 +87,28 @@ $homepage_sections = get_posts(array(
     'order' => 'ASC',
 ));
 
+// Buffer for custom CSS
+$custom_css = '';
+
 // Loop through each section and render it
 foreach ($homepage_sections as $section) {
     $section_type = get_post_meta($section->ID, '_section_type', true);
     $section_content = get_post_meta($section->ID, '_section_content', true);
+    
+    // Get custom styling
+    $custom_class = get_post_meta($section->ID, '_section_custom_class', true);
+    $custom_id = get_post_meta($section->ID, '_section_custom_id', true);
+    $section_css = get_post_meta($section->ID, '_section_custom_css', true);
+    
+    // Add section CSS to buffer if it exists
+    if (!empty($section_css)) {
+        $custom_css .= "\n" . $section_css;
+    }
 
     switch ($section_type) {
         case 'three_card':
             ?>
-            <div class="home-actions">
+            <div class="home-actions<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                 <div class="container">
                     <div class="action-grid">
                         <?php
@@ -131,7 +144,7 @@ foreach ($homepage_sections as $section) {
         case 'widget_area':
             if (!empty($section_content['widget_area_id'])) {
                 ?>
-                <div class="home-widget-area">
+                <div class="home-widget-area<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                     <div class="container">
                         <?php dynamic_sidebar($section_content['widget_area_id']); ?>
                     </div>
@@ -143,7 +156,7 @@ foreach ($homepage_sections as $section) {
         case 'text':
             if (!empty($section_content['text'])) {
                 ?>
-                <div class="home-text-section">
+                <div class="home-text-section<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                     <div class="container">
                         <?php echo wp_kses_post($section_content['text']); ?>
                     </div>
@@ -172,7 +185,7 @@ foreach ($homepage_sections as $section) {
                     )
                 );
                 ?>
-                <div class="home-html-section">
+                <div class="home-html-section<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                     <div class="container">
                         <?php echo wp_kses($section_content['html'], $allowed_html); ?>
                     </div>
@@ -181,5 +194,10 @@ foreach ($homepage_sections as $section) {
             }
             break;
     }
+}
+
+// Output custom CSS if any exists
+if (!empty($custom_css)) {
+    echo '<style type="text/css">' . wp_strip_all_tags($custom_css) . '</style>';
 }
 ?> 
