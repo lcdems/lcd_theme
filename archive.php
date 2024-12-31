@@ -6,10 +6,24 @@
  */
 
 get_header();
+
+// Get blog page featured image
+$blog_page_id = get_option('page_for_posts');
+$header_image = get_the_post_thumbnail_url($blog_page_id, 'full');
+$header_class = $header_image ? ' has-featured-image' : '';
+$header_style = '';
+
+if ($header_image) {
+    $header_style = sprintf('background-image: url(%s);', esc_url($header_image));
+    $header_style .= 'background-position: center center;';
+    $header_style .= 'background-size: cover;';
+    $header_style .= 'background-repeat: no-repeat;';
+    $header_style .= '--overlay-color: ' . esc_attr(lcd_get_overlay_rgba('#002B50', 70)) . ';';
+}
 ?>
 
 <main id="primary" class="site-main archive-template">
-    <header class="archive-header">
+    <header class="archive-header<?php echo esc_attr($header_class); ?>"<?php echo $header_style ? ' style="' . esc_attr($header_style) . '"' : ''; ?>>
         <div class="container">
             <div class="archive-header-content">
                 <?php

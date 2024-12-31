@@ -11,15 +11,23 @@
  */
 
 get_header();
+?>
 
-// If this is the main homepage URL
-if (is_front_page() && is_home() && !is_paged()) {
-    get_template_part('template-parts/content', 'front-page');
-} 
-// If this is the blog page or any other archive
-else {
-    get_template_part('template-parts/content', 'blog');
-}
+<main id="primary" class="site-main">
+    <?php
+    if (have_posts()) :
+        while (have_posts()) :
+            the_post();
+            get_template_part('template-parts/content', get_post_type());
+        endwhile;
 
+        the_posts_navigation();
+    else :
+        get_template_part('template-parts/content', 'none');
+    endif;
+    ?>
+</main>
+
+<?php
 get_footer();
 ?> 
