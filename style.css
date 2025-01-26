@@ -24,6 +24,7 @@ Text Domain: lcd-theme
     --spacing-sm: 1rem;
     --spacing-md: 2rem;
     --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
     --border-radius: 4px;
     --box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     --font-size-xs: 0.75rem;
@@ -1981,15 +1982,16 @@ textarea:focus {
 
 /* Keep the improved breadcrumb styles */
 .meeting-note-single .breadcrumbs {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.4);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius);
     margin-bottom: var(--spacing-sm);
     display: inline-block;
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .meeting-note-single .breadcrumbs a {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
     transition: color 0.3s ease;
     font-weight: 500;
@@ -2002,7 +2004,7 @@ textarea:focus {
 
 .meeting-note-single .breadcrumbs .separator {
     margin: 0 var(--spacing-xs);
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .meeting-note-single .breadcrumbs .current {
@@ -2807,4 +2809,522 @@ textarea:focus {
 .site-footer .rpwwt-widget li.rpwwt-sticky {
     background: rgba(255, 255, 255, 0.05);
     border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Events Archive Template */
+.events-archive .archive-header {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-md);
+    margin: var(--spacing-lg) 0;
+}
+
+.event-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.event-card .event-thumbnail {
+    position: relative;
+    padding-top: 56.25%; /* 16:9 aspect ratio */
+    overflow: hidden;
+}
+
+.event-card .event-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card:hover .event-thumbnail img {
+    transform: scale(1.05);
+}
+
+.event-card .event-content {
+    padding: var(--spacing-md);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card .event-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+.event-card .event-meta > div {
+    margin-bottom: var(--spacing-xs);
+}
+
+.event-card .event-meta i {
+    width: 16px;
+    margin-right: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.event-card .event-title {
+    font-size: 1.25rem;
+    margin: 0 0 var(--spacing-sm);
+    line-height: 1.3;
+}
+
+.event-card .event-title a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.event-card .event-title a:hover {
+    color: var(--color-primary);
+}
+
+.event-card .event-excerpt {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-md);
+}
+
+.event-card .event-footer {
+    margin-top: auto;
+}
+
+.no-events-found {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+}
+
+.no-events-found h2 {
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Single Event Template */
+.single-event-template .entry-header {
+    background-color: var(--color-secondary);
+    color: white;
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+}
+
+.single-event-template .entry-header.has-featured-image {
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .single-event-template .entry-header.has-featured-image {
+        min-height: 300px;
+        padding-top: 20px;
+        padding-bottom: 60px;
+    }
+}
+
+.single-event-template .featured-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.single-event-template .featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.single-event-template .featured-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+.single-event-template .entry-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.single-event-template .entry-title {
+    font-size: 2.5rem;
+    margin: var(--spacing-sm) 0;
+    color: white;
+}
+
+.single-event-template .event-meta-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+.single-event-template .event-meta-header i {
+    margin-right: var(--spacing-xs);
+}
+
+.single-event-template .event-content-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-sm);
+    margin: var(--spacing-lg) 0;
+}
+
+@media (max-width: 768px) {
+    .single-event-template .event-content-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+
+.single-event .breadcrumbs,
+.single-event .breadcrumbs a {
+    color: #fff!important;
+}
+
+.single-event-template .event-main-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+
+
+.single-event-template .event-details-card {
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-md);
+    position: sticky;
+    top: var(--spacing-md);
+}
+
+.single-event-template .event-details-card h3 {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.single-event-template .event-details-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.single-event-template .detail-item {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.single-event-template .detail-item i {
+    color: var(--color-primary);
+    width: 20px;
+    text-align: center;
+}
+
+.single-event-template .detail-content {
+    flex: 1;
+}
+
+.single-event-template .detail-content strong {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text);
+}
+
+.single-event-template .location-name {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.single-event-template .location-address {
+    display: block;
+    color: var(--color-text-light);
+    margin-bottom: var(--spacing-xs);
+}
+
+.single-event-template .map-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.single-event-template .map-link i {
+    margin-right: var(--spacing-xs);
+    color: var(--color-primary);
+}
+
+.single-event-template .map-link:hover {
+    text-decoration: underline;
+}
+
+.single-event-template .event-registration {
+    margin: var(--spacing-md) 0;
+    text-align: center;
+}
+
+.single-event-template .event-registration .button {
+    width: 100%;
+    justify-content: center;
+}
+
+.single-event-template .event-share {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.single-event-template .event-share h4 {
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.single-event-template .share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.single-event-template .share-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.single-event-template .share-button:hover {
+    transform: translateY(-2px);
+}
+
+.single-event-template .share-button.facebook {
+    background-color: #1877f2;
+}
+
+.single-event-template .share-button.twitter {
+    background-color: #1da1f2;
+}
+
+.single-event-template .share-button.email {
+    background-color: #ea4335;
+}
+
+.single-event-template .share-button.bluesky {
+    background-color: #0085ff;
+}
+
+.single-event-template .related-events {
+    margin-top: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border);
+}
+
+.single-event-template .related-events h2 {
+    margin-bottom: var(--spacing-md);
+    text-align: center;
+}
+
+/* Event Card Button */
+.event-card .button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+}
+
+.event-card .button:hover {
+    background-color: var(--color-secondary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.event-card .button i {
+    margin-left: var(--spacing-xs);
+}
+
+.single-event-template .event-poster {
+    margin: var(--spacing-lg) auto;
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 300px;
+}
+
+.single-event-template .event-poster-link {
+    display: block;
+    position: relative;
+    text-decoration: none;
+}
+
+.single-event-template .event-poster-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--border-radius);
+    transition: opacity 0.3s ease;
+}
+
+.single-event-template .event-poster-link:hover .event-poster-image {
+    opacity: 0.9;
+}
+
+.single-event-template .zoom-hint {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.single-event-template .event-poster-link:hover .zoom-hint {
+    opacity: 1;
+}
+
+.single-event-template .event-registration-sticky {
+    position: sticky;
+    top: var(--spacing-lg);
+    z-index: 100;
+    margin-bottom: var(--spacing-lg);
+}
+
+.single-event-template .event-registration-sticky .registration-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.single-event-template .event-registration-sticky .registration-button i {
+    transition: transform 0.3s ease;
+}
+
+.single-event-template .event-registration-sticky .registration-button:hover i {
+    transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+    .single-event-template .event-registration-sticky {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        top: auto;
+        margin: 0;
+        padding: var(--spacing-sm);
+        background: white;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .single-event-template .event-registration-sticky .registration-button {
+        border-radius: var(--border-radius);
+        margin: 0;
+    }
+
+    .single-event-template .event-content-wrapper {
+        padding-bottom: calc(var(--spacing-xl) + var(--spacing-lg));
+    }
+}
+
+/* Remove the old registration card styles */
+.single-event-template .event-registration-card,
+.single-event-template .event-registration-banner {
+    display: none;
+}
+
+.single-event-template .event-calendar {
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+}
+
+.single-event-template .event-calendar h4 {
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.single-event-template .calendar-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.single-event-template .calendar-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.single-event-template .calendar-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.single-event-template .calendar-button.google {
+    background-color: #4285f4;
+}
+
+.single-event-template .calendar-button.ical {
+    background-color: #34A853;
+}
+
+@media (max-width: 768px) {
+    .single-event-template .calendar-buttons {
+        padding-bottom: calc(var(--spacing-xl) + var(--spacing-lg));
+    }
 }

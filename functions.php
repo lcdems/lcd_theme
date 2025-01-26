@@ -553,4 +553,275 @@ function lcd_modify_breadcrumbs($links) {
 }
 add_filter('wpseo_breadcrumb_links', 'lcd_modify_breadcrumbs');
 
+/**
+ * Register Events Post Type
+ */
+function lcd_register_events_post_type() {
+    $labels = array(
+        'name'                  => _x('Events', 'Post type general name', 'lcd-theme'),
+        'singular_name'         => _x('Event', 'Post type singular name', 'lcd-theme'),
+        'menu_name'            => _x('Events', 'Admin Menu text', 'lcd-theme'),
+        'add_new'              => __('Add New', 'lcd-theme'),
+        'add_new_item'         => __('Add New Event', 'lcd-theme'),
+        'edit_item'            => __('Edit Event', 'lcd-theme'),
+        'new_item'             => __('New Event', 'lcd-theme'),
+        'view_item'            => __('View Event', 'lcd-theme'),
+        'search_items'         => __('Search Events', 'lcd-theme'),
+        'not_found'            => __('No events found', 'lcd-theme'),
+        'not_found_in_trash'   => __('No events found in Trash', 'lcd-theme'),
+        'all_items'            => __('All Events', 'lcd-theme'),
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'events'),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'menu_icon'          => 'dashicons-calendar-alt',
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+        'show_in_rest'       => true,
+    );
+
+    register_post_type('event', $args);
+}
+add_action('init', 'lcd_register_events_post_type');
+
+/**
+ * Add Event Meta Boxes
+ */
+function lcd_add_event_meta_boxes() {
+    add_meta_box(
+        'event_details',
+        __('Event Details', 'lcd-theme'),
+        'lcd_event_details_callback',
+        'event',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'lcd_add_event_meta_boxes');
+
+/**
+ * Event Details Meta Box Callback
+ */
+function lcd_event_details_callback($post) {
+    wp_nonce_field('lcd_event_details', 'lcd_event_details_nonce');
+
+    $event_date = get_post_meta($post->ID, '_event_date', true);
+    $event_time = get_post_meta($post->ID, '_event_time', true);
+    $event_end_time = get_post_meta($post->ID, '_event_end_time', true);
+    $event_location = get_post_meta($post->ID, '_event_location', true);
+    $event_address = get_post_meta($post->ID, '_event_address', true);
+    $event_map_link = get_post_meta($post->ID, '_event_map_link', true);
+    $event_registration_url = get_post_meta($post->ID, '_event_registration_url', true);
+    $event_capacity = get_post_meta($post->ID, '_event_capacity', true);
+    $event_cost = get_post_meta($post->ID, '_event_cost', true);
+    $event_poster_id = get_post_meta($post->ID, '_event_poster', true);
+    $event_button_text = get_post_meta($post->ID, '_event_button_text', true);
+    ?>
+    <div class="lcd-event-meta">
+        <p>
+            <label for="event_date"><?php _e('Event Date:', 'lcd-theme'); ?></label><br>
+            <input type="date" id="event_date" name="event_date" value="<?php echo esc_attr($event_date); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_time"><?php _e('Start Time:', 'lcd-theme'); ?></label><br>
+            <input type="time" id="event_time" name="event_time" value="<?php echo esc_attr($event_time); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_end_time"><?php _e('End Time:', 'lcd-theme'); ?></label><br>
+            <input type="time" id="event_end_time" name="event_end_time" value="<?php echo esc_attr($event_end_time); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_location"><?php _e('Location Name:', 'lcd-theme'); ?></label><br>
+            <input type="text" id="event_location" name="event_location" value="<?php echo esc_attr($event_location); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_address"><?php _e('Address:', 'lcd-theme'); ?></label><br>
+            <textarea id="event_address" name="event_address" class="widefat" rows="3"><?php echo esc_textarea($event_address); ?></textarea>
+        </p>
+        <p>
+            <label for="event_map_link"><?php _e('Map Link:', 'lcd-theme'); ?></label><br>
+            <input type="url" id="event_map_link" name="event_map_link" value="<?php echo esc_url($event_map_link); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_registration_url"><?php _e('Registration URL:', 'lcd-theme'); ?></label><br>
+            <input type="url" id="event_registration_url" name="event_registration_url" value="<?php echo esc_url($event_registration_url); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_button_text"><?php _e('Registration Button Text:', 'lcd-theme'); ?></label><br>
+            <input type="text" id="event_button_text" name="event_button_text" value="<?php echo esc_attr($event_button_text); ?>" class="widefat" placeholder="Register Now">
+        </p>
+        <p>
+            <label for="event_capacity"><?php _e('Capacity:', 'lcd-theme'); ?></label><br>
+            <input type="number" id="event_capacity" name="event_capacity" value="<?php echo esc_attr($event_capacity); ?>" class="widefat">
+        </p>
+        <p>
+            <label for="event_cost"><?php _e('Event Cost:', 'lcd-theme'); ?></label><br>
+            <input type="text" id="event_cost" name="event_cost" value="<?php echo esc_attr($event_cost); ?>" class="widefat" placeholder="Free or enter amount">
+        </p>
+        <p>
+            <label><?php _e('Event Poster:', 'lcd-theme'); ?></label><br>
+            <div class="event-poster-preview" style="margin-bottom: 10px;">
+                <?php if ($event_poster_id) : ?>
+                    <?php echo wp_get_attachment_image($event_poster_id, 'medium'); ?>
+                <?php endif; ?>
+            </div>
+            <input type="hidden" id="event_poster" name="event_poster" value="<?php echo esc_attr($event_poster_id); ?>">
+            <button type="button" class="button event-poster-upload"><?php _e('Upload Poster', 'lcd-theme'); ?></button>
+            <?php if ($event_poster_id) : ?>
+                <button type="button" class="button event-poster-remove"><?php _e('Remove Poster', 'lcd-theme'); ?></button>
+            <?php endif; ?>
+        </p>
+    </div>
+
+    <script>
+    jQuery(document).ready(function($) {
+        var frame;
+        $('.event-poster-upload').on('click', function(e) {
+            e.preventDefault();
+
+            if (frame) {
+                frame.open();
+                return;
+            }
+
+            frame = wp.media({
+                title: '<?php _e('Select or Upload Event Poster', 'lcd-theme'); ?>',
+                button: {
+                    text: '<?php _e('Use this image', 'lcd-theme'); ?>'
+                },
+                multiple: false
+            });
+
+            frame.on('select', function() {
+                var attachment = frame.state().get('selection').first().toJSON();
+                $('#event_poster').val(attachment.id);
+                $('.event-poster-preview').html('<img src="' + attachment.sizes.medium.url + '" style="max-width: 100%; height: auto;">');
+                $('.event-poster-remove').show();
+            });
+
+            frame.open();
+        });
+
+        $('.event-poster-remove').on('click', function(e) {
+            e.preventDefault();
+            $('#event_poster').val('');
+            $('.event-poster-preview').empty();
+            $(this).hide();
+        });
+    });
+    </script>
+    <?php
+}
+
+/**
+ * Save Event Meta Box Data
+ */
+function lcd_save_event_meta($post_id) {
+    if (!isset($_POST['lcd_event_details_nonce'])) {
+        return;
+    }
+
+    if (!wp_verify_nonce($_POST['lcd_event_details_nonce'], 'lcd_event_details')) {
+        return;
+    }
+
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    $fields = array(
+        'event_date',
+        'event_time',
+        'event_end_time',
+        'event_location',
+        'event_address',
+        'event_map_link',
+        'event_registration_url',
+        'event_capacity',
+        'event_cost',
+        'event_poster',
+        'event_button_text'
+    );
+
+    foreach ($fields as $field) {
+        if (isset($_POST[$field])) {
+            $value = sanitize_text_field($_POST[$field]);
+            update_post_meta($post_id, '_' . $field, $value);
+        }
+    }
+}
+add_action('save_post_event', 'lcd_save_event_meta');
+
+/**
+ * Add custom columns to events list
+ */
+function lcd_event_columns($columns) {
+    $new_columns = array();
+    $new_columns['cb'] = $columns['cb'];
+    $new_columns['title'] = $columns['title'];
+    $new_columns['event_date'] = __('Event Date', 'lcd-theme');
+    $new_columns['event_location'] = __('Location', 'lcd-theme');
+    $new_columns['event_cost'] = __('Cost', 'lcd-theme');
+    $new_columns['date'] = $columns['date'];
+    return $new_columns;
+}
+add_filter('manage_event_posts_columns', 'lcd_event_columns');
+
+/**
+ * Add content to custom columns
+ */
+function lcd_event_column_content($column, $post_id) {
+    switch ($column) {
+        case 'event_date':
+            $date = get_post_meta($post_id, '_event_date', true);
+            echo $date ? date_i18n(get_option('date_format'), strtotime($date)) : '—';
+            break;
+        case 'event_location':
+            echo get_post_meta($post_id, '_event_location', true) ?: '—';
+            break;
+        case 'event_cost':
+            echo get_post_meta($post_id, '_event_cost', true) ?: '—';
+            break;
+    }
+}
+add_action('manage_event_posts_custom_column', 'lcd_event_column_content', 10, 2);
+
+/**
+ * Make event date column sortable
+ */
+function lcd_event_sortable_columns($columns) {
+    $columns['event_date'] = 'event_date';
+    return $columns;
+}
+add_filter('manage_edit-event_sortable_columns', 'lcd_event_sortable_columns');
+
+/**
+ * Sort events by date
+ */
+function lcd_event_sort_by_date($query) {
+    if (!is_admin() || !$query->is_main_query()) {
+        return;
+    }
+
+    if ($query->get('post_type') === 'event' && $query->get('orderby') === 'event_date') {
+        $query->set('meta_key', '_event_date');
+        $query->set('orderby', 'meta_value');
+        $query->set('order', 'ASC');
+    }
+}
+add_action('pre_get_posts', 'lcd_event_sort_by_date');
+
   
