@@ -23,6 +23,18 @@
         })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
         sender('fb2eeef11e1128')
     </script>
+
+    <?php 
+    // Conversion tracker to email signup from signup page
+    if (is_page(2305)) : ?>
+        <!-- Google tag (gtag.js) event -->
+        <script>
+            gtag('event', 'conversion_event_signup', {
+                // <event_parameters>
+            });
+        </script>
+
+    <?php endif; ?>
 </head>
 
 
