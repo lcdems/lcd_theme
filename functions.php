@@ -625,6 +625,7 @@ function lcd_event_details_callback($post) {
     $event_cost = get_post_meta($post->ID, '_event_cost', true);
     $event_poster_id = get_post_meta($post->ID, '_event_poster', true);
     $event_button_text = get_post_meta($post->ID, '_event_button_text', true);
+    $event_ticketing_notes = get_post_meta($post->ID, '_event_ticketing_notes', true);
     ?>
     <div class="lcd-event-meta">
         <p>
@@ -658,6 +659,11 @@ function lcd_event_details_callback($post) {
         <p>
             <label for="event_button_text"><?php _e('Registration Button Text:', 'lcd-theme'); ?></label><br>
             <input type="text" id="event_button_text" name="event_button_text" value="<?php echo esc_attr($event_button_text); ?>" class="widefat" placeholder="Register Now">
+        </p>
+        <p>
+            <label for="event_ticketing_notes"><?php _e('Ticketing Notes:', 'lcd-theme'); ?></label><br>
+            <textarea id="event_ticketing_notes" name="event_ticketing_notes" class="widefat" rows="3" placeholder="Enter any additional notes about registration or ticketing"><?php echo esc_textarea($event_ticketing_notes); ?></textarea>
+            <span class="description"><?php _e('This text will appear below the registration button.', 'lcd-theme'); ?></span>
         </p>
         <p>
             <label for="event_capacity"><?php _e('Capacity:', 'lcd-theme'); ?></label><br>
@@ -753,7 +759,8 @@ function lcd_save_event_meta($post_id) {
         'event_capacity',
         'event_cost',
         'event_poster',
-        'event_button_text'
+        'event_button_text',
+        'event_ticketing_notes'
     );
 
     foreach ($fields as $field) {

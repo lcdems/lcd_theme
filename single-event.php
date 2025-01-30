@@ -49,25 +49,33 @@ get_header();
                         <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 
                         <div class="event-meta-header">
-                            <div class="event-date-time">
+                            <div class="meta-item">
                                 <i class="fas fa-calendar"></i>
-                                <span class="event-date"><?php echo esc_html($date_formatted); ?></span>
-                                <?php if ($time_formatted) : ?>
-                                    <span class="event-time">
-                                        <i class="fas fa-clock"></i>
-                                        <?php 
-                                        echo esc_html($time_formatted);
-                                        if ($end_time_formatted) {
-                                            echo ' - ' . esc_html($end_time_formatted);
-                                        }
-                                        ?>
-                                    </span>
-                                <?php endif; ?>
+                                <div class="meta-content">
+                                    <span class="event-date"><?php echo esc_html($date_formatted); ?></span>
+                                </div>
                             </div>
+                            <?php if ($time_formatted) : ?>
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <div class="meta-content">
+                                        <span class="event-time">
+                                            <?php 
+                                            echo esc_html($time_formatted);
+                                            if ($end_time_formatted) {
+                                                echo ' - ' . esc_html($end_time_formatted);
+                                            }
+                                            ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
                             <?php if ($event_location) : ?>
-                                <div class="event-location">
+                                <div class="meta-item">
                                     <i class="fas fa-map-marker-alt"></i>
-                                    <span><?php echo esc_html($event_location); ?></span>
+                                    <div class="meta-content">
+                                        <span><?php echo esc_html($event_location); ?></span>
+                                    </div>
                                 </div>
                             <?php endif; ?>
                         </div>
@@ -107,6 +115,13 @@ get_header();
                                     ?>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
+                                <?php 
+                                $ticketing_notes = get_post_meta(get_the_ID(), '_event_ticketing_notes', true);
+                                if ($ticketing_notes) : ?>
+                                    <div class="ticketing-notes">
+                                        <?php echo wpautop(esc_html($ticketing_notes)); ?>
+                                    </div>
+                                <?php endif; ?>
                             </div>
                         <?php endif; ?>
 
