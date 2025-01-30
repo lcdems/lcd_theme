@@ -44,16 +44,20 @@ get_header();
             <div class="content-wrapper<?php echo get_post_meta(get_the_ID(), 'full_width_content', true) ? ' full-width-content' : ''; ?>">
                 <div class="entry-content">
                     <?php 
-                    the_content();
+                    if (post_password_required()) {
+                        get_template_part('template-parts/password-form');
+                    } else {
+                        the_content();
 
-                    wp_link_pages(array(
-                        'before' => '<div class="page-links">' . esc_html__('Pages:', 'lcd-theme'),
-                        'after'  => '</div>',
-                    ));
+                        wp_link_pages(array(
+                            'before' => '<div class="page-links">' . esc_html__('Pages:', 'lcd-theme'),
+                            'after'  => '</div>',
+                        ));
+                    }
                     ?>
                 </div>
 
-                <?php if (comments_open() || get_comments_number()) : ?>
+                <?php if (!post_password_required() && (comments_open() || get_comments_number())) : ?>
                     <footer class="entry-footer">
                         <?php comments_template(); ?>
                     </footer>
