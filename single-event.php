@@ -155,10 +155,10 @@ get_header();
                                                 <strong><?php esc_html_e('Location', 'lcd-theme'); ?></strong>
                                                 <span><?php echo esc_html($event_location); ?></span>
                                                 <?php if ($event_address) : ?>
-                                                    <span class="address"><?php echo esc_html($event_address); ?></span>
+                                                    <br/><span class="address"><?php echo esc_html($event_address); ?></span>
                                                 <?php endif; ?>
                                                 <?php if ($event_map_link) : ?>
-                                                    <a href="<?php echo esc_url($event_map_link); ?>" class="map-link" target="_blank">
+                                                    <br/><a href="<?php echo esc_url($event_map_link); ?>" class="map-link" target="_blank">
                                                         <?php esc_html_e('View Map', 'lcd-theme'); ?>
                                                         <i class="fas fa-external-link-alt"></i>
                                                     </a>
