@@ -161,7 +161,7 @@ $banner_style .= '--overlay-color: ' . esc_attr(lcd_get_overlay_rgba($overlay_co
                     ?>
                     <div class="home-text-section<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                         <div class="container">
-                            <?php echo wp_kses_post($section_content['text']); ?>
+                            <?php echo do_shortcode(wp_kses_post($section_content['text'])); ?>
                         </div>
                     </div>
                     <?php
@@ -190,7 +190,7 @@ $banner_style .= '--overlay-color: ' . esc_attr(lcd_get_overlay_rgba($overlay_co
                     ?>
                     <div class="home-html-section<?php echo !empty($custom_class) ? ' ' . esc_attr($custom_class) : ''; ?>"<?php echo !empty($custom_id) ? ' id="' . esc_attr($custom_id) . '"' : ''; ?>>
                         <div class="container">
-                            <?php echo wp_kses($section_content['html'], $allowed_html); ?>
+                            <?php echo do_shortcode(wp_kses($section_content['html'], $allowed_html)); ?>
                         </div>
                     </div>
                     <?php
