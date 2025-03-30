@@ -1,0 +1,223 @@
+/**
+ * Tax Calculator Styles
+ */
+
+/* Basic Styles */
+.tax-calculator-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 100%;
+}
+
+.tax-calculator-container h1, 
+.tax-calculator-container h2, 
+.tax-calculator-container h3 {
+    color: #0046ad;
+}
+
+.tax-calculator-container .calculator-panel {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form Styles */
+.tax-calculator-container .form-group {
+    margin-bottom: 25px;
+}
+
+.tax-calculator-container label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.tax-calculator-container input[type="number"], 
+.tax-calculator-container select, 
+.tax-calculator-container input[type="checkbox"] {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.tax-calculator-container input[type="number"], 
+.tax-calculator-container select {
+    width: 100%;
+}
+
+.tax-calculator-container .checkbox-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tax-calculator-container .checkbox-group label {
+    display: inline;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.tax-calculator-container button {
+    background-color: #0046ad;
+    color: white;
+    border: none;
+    padding: 14px 25px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 35px auto;
+    width: 200px;
+}
+
+.tax-calculator-container button:hover {
+    background-color: #003580;
+}
+
+/* Results Styles */
+.tax-calculator-container .results {
+    display: none;
+    margin-top: 30px;
+}
+
+.tax-calculator-container .result-box {
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 5px solid #0046ad;
+}
+
+.tax-calculator-container .positive {
+    color: #2e8540;
+    font-weight: bold;
+}
+
+.tax-calculator-container .negative {
+    color: #d83933;
+    font-weight: bold;
+}
+
+.tax-calculator-container .highlight {
+    background-color: #fffde7;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.tax-calculator-container .note {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 8px;
+}
+
+.tax-calculator-container .disclaimer {
+    text-align: center;
+    color: #666;
+    font-size: 0.85em;
+    margin: 20px 0;
+}
+
+.tax-calculator-container .disclaimer p {
+    margin-bottom: 10px;
+}
+
+.tax-calculator-container .savings-message {
+    font-size: 24px;
+    text-align: center;
+    margin: 35px 0;
+}
+
+/* Tax Breakdown Styles */
+.tax-calculator-container .tax-breakdown {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.tax-calculator-container .tax-item {
+    width: 48%;
+    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 6px;
+    background-color: #f0f7ff;
+}
+
+.tax-calculator-container .benefit-list {
+    background-color: #f0f9f5;
+    padding: 25px;
+    border-radius: 6px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.tax-calculator-container .benefit-list h3 {
+    color: #2e8540;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.tax-calculator-container .benefit-list ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.tax-calculator-container .benefit-list li {
+    margin-bottom: 12px;
+}
+
+/* Accordion Styles */
+.tax-calculator-container .accordion {
+    background-color: #f1f1f1;
+    color: #444;
+    cursor: pointer;
+    padding: 18px 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.tax-calculator-container .accordion:hover {
+    background-color: #ddd;
+}
+
+.tax-calculator-container .panel {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    margin-bottom: 15px;
+}
+
+.tax-calculator-container .active {
+    background-color: #e6e6e6;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .tax-calculator-container .tax-item {
+        width: 100%;
+    }
+    
+    .tax-calculator-container .calculator-panel {
+        padding: 20px;
+    }
+    
+    .tax-calculator-container button {
+        width: 100%;
+    }
+} 

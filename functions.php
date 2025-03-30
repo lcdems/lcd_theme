@@ -298,6 +298,24 @@ function lcd_scripts() {
         true
     );
 
+    // Enqueue Tax Calculator CSS and JS if we're on the tax calculator page template
+    if (is_page_template('page-tax-calculator.php')) {
+        wp_enqueue_style(
+            'lcd-tax-calculator-style',
+            get_template_directory_uri() . '/css/tax-calculator.css',
+            array(),
+            wp_get_theme()->get('Version')
+        );
+        
+        wp_enqueue_script(
+            'lcd-tax-calculator-script',
+            get_template_directory_uri() . '/js/tax-calculator.js',
+            array('jquery'),
+            wp_get_theme()->get('Version'),
+            true
+        );
+    }
+
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
