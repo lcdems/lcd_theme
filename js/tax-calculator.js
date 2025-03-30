@@ -241,7 +241,7 @@ function calculateImpact() {
 
 // Function to estimate taxable spending based on household demographics
 function estimateTaxableSpending(incomeLevel, householdSize) {
-    // Income brackets
+    // Income brackets - using mean values for each range
     const incomes = [
         25000,        // 1 = Under $30,000
         40000,        // 2 = $30,000 - $50,000
@@ -253,34 +253,37 @@ function estimateTaxableSpending(incomeLevel, householdSize) {
         1500000       // 8 = Over $1,000,000
     ];
     
-    // Base spending by income (percentage of income spent on taxable goods)
+    // Washington-specific taxable spending rates
+    // Note: WA doesn't tax most groceries or prescription drugs
+    // but does tax prepared foods, household goods, clothing, etc.
     const baseSpendingRates = [
-        0.27,         // 1 = Under $30,000
-        0.29,         // 2 = $30,000 - $50,000
-        0.30,         // 3 = $50,000 - $75,000
-        0.32,         // 4 = $75,000 - $100,000
-        0.35,         // 5 = $100,000 - $150,000
-        0.38,         // 6 = $150,000 - $200,000
-        0.40,         // 7 = Over $200,000
-        0.25          // 8 = Over $1,000,000 (lower rate as more goes to savings/investments)
+        0.23,         // 1 = Under $30,000 (higher % of income goes to non-taxable groceries)
+        0.26,         // 2 = $30,000 - $50,000
+        0.28,         // 3 = $50,000 - $75,000
+        0.30,         // 4 = $75,000 - $100,000
+        0.32,         // 5 = $100,000 - $150,000
+        0.33,         // 6 = $150,000 - $200,000
+        0.34,         // 7 = Over $200,000 (more discretionary spending)
+        0.22          // 8 = Over $1,000,000 (much more goes to savings/investments)
     ];
     
     // Household size multipliers (adjust spending based on household size)
+    // These account for economies of scale in households
     const householdMultipliers = [
         1.0,    // 1 person
-        1.7,    // 2 people
-        2.2,    // 3 people
-        2.6,    // 4 people
-        3.0     // 5+ people
+        1.6,    // 2 people (less than double due to shared expenses)
+        1.9,    // 3 people
+        2.2,    // 4 people
+        2.5     // 5+ people
     ];
     
-    // Calculate base spending for the income level
-    const income = incomes[incomeLevel];
-    const baseRate = baseSpendingRates[incomeLevel];
+    // Taxable spending calculation
+    const income = incomes[incomeLevel - 1]; // Adjust for 1-based index
+    const baseRate = baseSpendingRates[incomeLevel - 1];
     const baseSpending = income * baseRate;
     
-    // Apply household size multiplier for non-housing expenses
-    const householdMultiplier = householdMultipliers[householdSize];
+    // Apply household size multiplier
+    const householdMultiplier = householdMultipliers[Math.min(householdSize - 1, 4)]; // Adjust for 1-based index
     const adjustedSpending = baseSpending * householdMultiplier;
     
     // Return the estimated annual taxable spending
