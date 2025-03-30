@@ -203,7 +203,7 @@ get_header();
                                     <p><small>This calculator provides estimates based on current budget proposals. Final impacts may vary based on budget negotiations and your specific circumstances. For more details, <a href="https://washingtonstatestandard.com/2025/03/24/democrats-in-washington-legislature-pitch-competing-budget-plans/" target="_blank">read the full budget proposal</a>.</small></p>
                                 </div>
                                 
-                                <p>Want to learn more about the 2025 Washington State budget proposals? <a href="https://washingtonstatestandard.com/2025/03/24/democrats-in-washington-legislature-pitch-competing-budget-plans/" target="_blank">Read the details here</a> or contact the Lewis County Democrats for a breakdown of local impacts.</p>
+                                <p>Want to learn more about the 2025 Washington State budget proposals? <a href="https://washingtonstatestandard.com/2025/03/24/democrats-in-washington-legislature-pitch-competing-budget-plans/" target="_blank">Read the details here</a> or <a href="https://lewiscountydemocrats.org/the-hidden-costs-of-budget-austerity-why-no-new-taxes-comes-at-a-price-lewis-county-cant-afford/" target="_blank">read our breakdown of how the GOP's austerity budget would impact Lewis County.</a></p>
                             </div>
                         </div>
                         <?php
