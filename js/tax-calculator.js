@@ -83,12 +83,12 @@ function calculateImpact() {
     // Hunting/Fishing Licenses
     if (isHuntingFishing) {
         // Proposal would increase typical license fees by about 38% (~$40 increase on average)
-        const licenseFeeImpact = -40;
+        const licenseFeeImpact = -50;
         additionalImpacts += licenseFeeImpact;
         hasAdditionalImpacts = true;
         
         document.getElementById('hunting-impact').style.display = 'block';
-        document.getElementById('hunting-value').textContent = `License fees would increase approximately 38% ($40 on average)`;
+        document.getElementById('hunting-value').textContent = `License fees would increase approximately 38% ($50 on average)`;
         document.getElementById('hunting-value').className = 'negative';
     } else {
         document.getElementById('hunting-impact').style.display = 'none';
@@ -243,7 +243,6 @@ function calculateImpact() {
 function estimateTaxableSpending(incomeLevel, householdSize) {
     // Income brackets
     const incomes = [
-        0,            // 0 = Prefer not to say (should no longer be used)
         25000,        // 1 = Under $30,000
         40000,        // 2 = $30,000 - $50,000
         62500,        // 3 = $50,000 - $75,000
