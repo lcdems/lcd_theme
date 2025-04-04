@@ -91,7 +91,9 @@ img {
     max-width: 100%;
     height: auto;
 }
-
+ul {
+    margin-bottom: 1rem;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
