@@ -65,6 +65,11 @@ body {
     overflow-x: hidden;
 }
 
+/* Add this rule to prevent body from being constrained by entry-content class */
+body.entry-content {
+    max-width: none !important; /* Use !important to ensure override if necessary */
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
