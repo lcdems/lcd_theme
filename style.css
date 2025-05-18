@@ -2390,6 +2390,7 @@ textarea:focus {
 @media (max-width: 768px) {
     .lcd-cols {
         flex-direction: column;
+        align-items: center;
     }
 
     .lcd-col,
