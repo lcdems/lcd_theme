@@ -2365,7 +2365,7 @@ textarea:focus {
 /* Column Shortcodes */
 .lcd-cols {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
 }
@@ -2374,6 +2374,9 @@ textarea:focus {
 }
 .lcd-cols.space-around {
     justify-content: space-around;
+}
+.lcd-cols.wrap {
+    flex-wrap: wrap;
 }
 
 .lcd-col {
