@@ -2369,6 +2369,12 @@ textarea:focus {
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-md);
 }
+.lcd-cols.space-between {
+    justify-content: space-between;
+}
+.lcd-cols.space-around {
+    justify-content: space-around;
+}
 
 .lcd-col {
     flex: 1;
