@@ -22,6 +22,11 @@ require get_template_directory() . '/inc/homepage-builder.php';
 require get_template_directory() . '/inc/shortcodes/columns.php';
 
 /**
+ * Include TinyMCE Integration
+ */
+require get_template_directory() . '/inc/tinymce-integration.php';
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function lcd_theme_setup() {
