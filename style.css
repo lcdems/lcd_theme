@@ -539,6 +539,7 @@ button:hover {
     transition: opacity 0.3s ease, visibility 0.3s ease;
     border: none;
     box-shadow: var(--box-shadow);
+    padding: 0!important;
 }
 
 .back-to-top.show {
