@@ -1,0 +1,404 @@
+/**
+ * Universal Modal System Styles
+ * Provides consistent modal styling across theme and plugins
+ */
+
+/* Modal Container */
+#lcd-modal-container {
+    position: relative;
+    z-index: 10000;
+}
+
+/* Backdrop */
+.lcd-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Modal Container */
+.lcd-modal {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+/* Modal Sizes */
+.lcd-modal-small {
+    width: 100%;
+    max-width: 400px;
+}
+
+.lcd-modal-medium {
+    width: 100%;
+    max-width: 600px;
+}
+
+.lcd-modal-large {
+    width: 100%;
+    max-width: 900px;
+}
+
+.lcd-modal-full {
+    width: 95vw;
+    height: 95vh;
+    max-width: none;
+    max-height: none;
+}
+
+/* Modal Content */
+.lcd-modal-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Modal Header */
+.lcd-modal-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+}
+
+.lcd-modal-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.3;
+}
+
+.lcd-modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    line-height: 1;
+    padding: 4px;
+    margin: -4px -4px -4px 16px;
+    cursor: pointer;
+    color: #666;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.lcd-modal-close:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.lcd-modal-close:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Modal Body */
+.lcd-modal-body {
+    padding: 24px;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.lcd-modal-body:first-child {
+    padding-top: 32px;
+}
+
+.lcd-modal-body:last-child {
+    padding-bottom: 32px;
+}
+
+/* Modal Footer */
+.lcd-modal-footer {
+    padding: 16px 24px 24px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-shrink: 0;
+}
+
+/* Modal Buttons */
+.lcd-modal-btn {
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+.lcd-modal-btn:hover {
+    border-color: #999;
+    background: #f8f9fa;
+}
+
+.lcd-modal-btn:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+.lcd-modal-btn:active {
+    transform: translateY(1px);
+}
+
+/* Button Variants */
+.lcd-btn-primary {
+    background: #0073aa;
+    border-color: #0073aa;
+    color: #fff;
+}
+
+.lcd-btn-primary:hover {
+    background: #005a87;
+    border-color: #005a87;
+    color: #fff;
+}
+
+.lcd-btn-secondary {
+    background: #f8f9fa;
+    border-color: #6c757d;
+    color: #6c757d;
+}
+
+.lcd-btn-secondary:hover {
+    background: #e9ecef;
+    border-color: #5a6268;
+    color: #5a6268;
+}
+
+.lcd-btn-danger {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.lcd-btn-danger:hover {
+    background: #c82333;
+    border-color: #bd2130;
+    color: #fff;
+}
+
+.lcd-btn-success {
+    background: #28a745;
+    border-color: #28a745;
+    color: #fff;
+}
+
+.lcd-btn-success:hover {
+    background: #218838;
+    border-color: #1e7e34;
+    color: #fff;
+}
+
+/* Loading State */
+.lcd-modal-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+}
+
+.lcd-modal-loading::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e0e0e0;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+/* Error State */
+.lcd-modal-error {
+    color: #dc3545;
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 0;
+}
+
+/* Body class when modal is open */
+body.lcd-modal-open {
+    overflow: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lcd-modal-backdrop {
+        padding: 10px;
+    }
+    
+    .lcd-modal {
+        max-height: 95vh;
+    }
+    
+    .lcd-modal-small,
+    .lcd-modal-medium,
+    .lcd-modal-large {
+        width: 100%;
+        max-width: none;
+    }
+    
+    .lcd-modal-header {
+        padding: 16px 20px 12px;
+    }
+    
+    .lcd-modal-title {
+        font-size: 18px;
+    }
+    
+    .lcd-modal-body {
+        padding: 20px;
+    }
+    
+    .lcd-modal-footer {
+        padding: 12px 20px 20px;
+        flex-direction: column-reverse;
+    }
+    
+    .lcd-modal-btn {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .lcd-modal-btn:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Animation keyframes */
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .lcd-modal {
+        border: 2px solid #000;
+    }
+    
+    .lcd-modal-header,
+    .lcd-modal-footer {
+        border-color: #000;
+    }
+    
+    .lcd-modal-btn {
+        border-width: 2px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    .lcd-modal {
+        animation: none;
+    }
+    
+    .lcd-modal-loading::before {
+        animation: none;
+    }
+    
+    .lcd-modal-close,
+    .lcd-modal-btn {
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .lcd-modal {
+        background: #2d3748;
+        color: #e2e8f0;
+    }
+    
+    .lcd-modal-title {
+        color: #f7fafc;
+    }
+    
+    .lcd-modal-header,
+    .lcd-modal-footer {
+        border-color: #4a5568;
+    }
+    
+    .lcd-modal-close {
+        color: #a0aec0;
+    }
+    
+    .lcd-modal-close:hover {
+        background: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .lcd-modal-btn {
+        background: #4a5568;
+        border-color: #718096;
+        color: #e2e8f0;
+    }
+    
+    .lcd-modal-btn:hover {
+        background: #2d3748;
+        border-color: #a0aec0;
+    }
+    
+    .lcd-btn-secondary {
+        background: #2d3748;
+        border-color: #718096;
+        color: #a0aec0;
+    }
+    
+    .lcd-modal-error {
+        background: #742a2a;
+        border-color: #822727;
+        color: #feb2b2;
+    }
+}
+
+/* Focus visible support for better accessibility */
+.lcd-modal-close:focus-visible,
+.lcd-modal-btn:focus-visible {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .lcd-modal-backdrop {
+        display: none !important;
+    }
+} 

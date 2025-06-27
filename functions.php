@@ -286,11 +286,27 @@ function lcd_scripts() {
         null
     );
 
+    // Enqueue modal system (early, so plugins can depend on it)
+    wp_enqueue_style(
+        'lcd-modal-system',
+        get_template_directory_uri() . '/css/modal-system.css',
+        array(),
+        wp_get_theme()->get('Version')
+    );
+
+    wp_enqueue_script(
+        'lcd-modal-system',
+        get_template_directory_uri() . '/js/modal-system.js',
+        array('jquery'),
+        wp_get_theme()->get('Version'),
+        false // Load in header so plugins can access it
+    );
+
     // Enqueue theme stylesheet
     wp_enqueue_style(
         'lcd-style',
         get_stylesheet_uri(),
-        array(),
+        array('lcd-modal-system'), // Depend on modal system
         wp_get_theme()->get('Version')
     );
 
@@ -298,7 +314,7 @@ function lcd_scripts() {
     wp_enqueue_script(
         'lcd-script',
         get_template_directory_uri() . '/js/script.js',
-        array(),
+        array('lcd-modal-system'),
         wp_get_theme()->get('Version'),
         true
     );
@@ -307,11 +323,30 @@ function lcd_scripts() {
         wp_enqueue_script('comment-reply');
     }
 
-    // Enqueue styles
-    wp_enqueue_style('lcd-theme-style', get_stylesheet_uri(), array(), wp_get_theme()->get('Version'));
-
 }
 add_action('wp_enqueue_scripts', 'lcd_scripts');
+
+/**
+ * Enqueue admin scripts and styles.
+ */
+function lcd_admin_scripts($hook) {
+    // Enqueue modal system in admin (so plugins can use it)
+    wp_enqueue_style(
+        'lcd-modal-system-admin',
+        get_template_directory_uri() . '/css/modal-system.css',
+        array(),
+        wp_get_theme()->get('Version')
+    );
+
+    wp_enqueue_script(
+        'lcd-modal-system-admin',
+        get_template_directory_uri() . '/js/modal-system.js',
+        array('jquery'),
+        wp_get_theme()->get('Version'),
+        false // Load in header so plugins can access it
+    );
+}
+add_action('admin_enqueue_scripts', 'lcd_admin_scripts');
 
 /**
  * Add custom classes to body
