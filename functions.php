@@ -319,6 +319,16 @@ function lcd_scripts() {
         true
     );
 
+    // Enqueue voter info styles for voter info page template
+    if (is_page_template('page-voter-info.php')) {
+        wp_enqueue_style(
+            'lcd-voter-info',
+            get_template_directory_uri() . '/css/voter-info.css',
+            array('lcd-style'),
+            wp_get_theme()->get('Version')
+        );
+    }
+
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
