@@ -20,7 +20,7 @@ require get_template_directory() . '/inc/homepage-builder.php';
  * Include shortcodes
  */
 require get_template_directory() . '/inc/shortcodes/columns.php';
-
+require get_template_directory() . '/inc/shortcodes/youtube-embed.php';
 /**
  * Include TinyMCE Integration
  */
