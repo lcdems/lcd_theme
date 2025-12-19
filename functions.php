@@ -29,6 +29,14 @@ require get_template_directory() . '/inc/tinymce-integration.php';
 /**
  * Sets up theme defaults and registers support for various WordPress features.
  */
+// Add temporarily to reset the email settings
+add_action('admin_init', function() {
+    if (current_user_can('manage_options') && isset($_GET['reset_email_settings'])) {
+        delete_option('lcd_people_email_settings');
+        wp_redirect(admin_url('admin.php?page=lcd-email-settings'));
+        exit;
+    }
+});
 function lcd_theme_setup() {
     // Add default posts and comments RSS feed links to head.
     add_theme_support('automatic-feed-links');
