@@ -27,6 +27,11 @@ require get_template_directory() . '/inc/shortcodes/youtube-embed.php';
 require get_template_directory() . '/inc/tinymce-integration.php';
 
 /**
+ * Include Facebook Tracking Events
+ */
+require get_template_directory() . '/inc/facebook-tracking.php';
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 
