@@ -148,20 +148,147 @@ function lcd_fb_tracking_register_settings() {
     register_setting('lcd_fb_tracking_settings', 'lcd_fb_tracking_enabled', array(
         'sanitize_callback' => 'absint',
     ));
+    register_setting('lcd_fb_tracking_settings', 'lcd_fb_advanced_matching_enabled', array(
+        'sanitize_callback' => 'absint',
+    ));
+    register_setting('lcd_fb_tracking_settings', 'lcd_fb_advanced_matching', array(
+        'sanitize_callback' => 'lcd_fb_sanitize_advanced_matching',
+    ));
 }
 add_action('admin_init', 'lcd_fb_tracking_register_settings');
+
+/**
+ * Sanitize advanced matching settings
+ */
+function lcd_fb_sanitize_advanced_matching($input) {
+    if (!is_array($input)) {
+        return array();
+    }
+    
+    $sanitized = array();
+    $valid_fields = lcd_get_fb_advanced_matching_fields();
+    
+    foreach ($valid_fields as $field_key => $field_data) {
+        if (isset($input[$field_key])) {
+            $sanitized[$field_key] = array(
+                'enabled' => !empty($input[$field_key]['enabled']) ? 1 : 0,
+                'source' => isset($input[$field_key]['source']) ? sanitize_text_field($input[$field_key]['source']) : 'manual',
+                'query_key' => isset($input[$field_key]['query_key']) ? sanitize_text_field($input[$field_key]['query_key']) : $field_key,
+                'manual_value' => isset($input[$field_key]['manual_value']) ? sanitize_text_field($input[$field_key]['manual_value']) : '',
+            );
+        }
+    }
+    
+    return $sanitized;
+}
+
+/**
+ * Get available Advanced Matching fields
+ */
+function lcd_get_fb_advanced_matching_fields() {
+    return array(
+        'em' => array(
+            'label' => __('Email', 'lcd-theme'),
+            'description' => __('User email address (will be hashed by Facebook)', 'lcd-theme'),
+            'supports_wp_user' => true,
+        ),
+        'ph' => array(
+            'label' => __('Phone Number', 'lcd-theme'),
+            'description' => __('Phone number with country code (e.g., 12025551234)', 'lcd-theme'),
+            'supports_wp_user' => false,
+        ),
+        'fn' => array(
+            'label' => __('First Name', 'lcd-theme'),
+            'description' => __('User first name', 'lcd-theme'),
+            'supports_wp_user' => true,
+        ),
+        'ln' => array(
+            'label' => __('Last Name', 'lcd-theme'),
+            'description' => __('User last name', 'lcd-theme'),
+            'supports_wp_user' => true,
+        ),
+        'ct' => array(
+            'label' => __('City', 'lcd-theme'),
+            'description' => __('City name (lowercase, no spaces)', 'lcd-theme'),
+            'supports_wp_user' => false,
+        ),
+        'st' => array(
+            'label' => __('State', 'lcd-theme'),
+            'description' => __('State code (2-letter, lowercase)', 'lcd-theme'),
+            'supports_wp_user' => false,
+        ),
+        'zp' => array(
+            'label' => __('Zip/Postal Code', 'lcd-theme'),
+            'description' => __('Zip or postal code', 'lcd-theme'),
+            'supports_wp_user' => false,
+        ),
+        'country' => array(
+            'label' => __('Country', 'lcd-theme'),
+            'description' => __('Country code (2-letter, lowercase)', 'lcd-theme'),
+            'supports_wp_user' => false,
+        ),
+        'external_id' => array(
+            'label' => __('External ID', 'lcd-theme'),
+            'description' => __('Unique user ID from your system', 'lcd-theme'),
+            'supports_wp_user' => true,
+        ),
+    );
+}
 
 /**
  * Settings page callback
  */
 function lcd_fb_tracking_settings_page() {
+    $advanced_matching = get_option('lcd_fb_advanced_matching', array());
+    $matching_fields = lcd_get_fb_advanced_matching_fields();
     ?>
+    <style>
+        .lcd-fb-advanced-matching-table {
+            margin-top: 15px;
+        }
+        .lcd-fb-advanced-matching-table th {
+            text-align: left;
+            padding: 10px;
+        }
+        .lcd-fb-advanced-matching-table td {
+            padding: 8px 10px;
+            vertical-align: middle;
+        }
+        .lcd-fb-advanced-matching-table .description {
+            font-size: 12px;
+            color: #666;
+        }
+        .lcd-fb-am-source-fields {
+            display: none;
+            margin-top: 5px;
+        }
+        .lcd-fb-am-source-fields.active {
+            display: block;
+        }
+        .lcd-fb-am-row {
+            background: #f9f9f9;
+        }
+        .lcd-fb-am-row:nth-child(even) {
+            background: #fff;
+        }
+        .lcd-fb-info-box {
+            background: #e7f3fe;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .lcd-fb-info-box code {
+            background: rgba(0,0,0,0.05);
+            padding: 2px 6px;
+        }
+    </style>
     <div class="wrap">
         <h1><?php echo esc_html__('Facebook Tracking Settings', 'lcd-theme'); ?></h1>
         
         <form method="post" action="options.php">
             <?php settings_fields('lcd_fb_tracking_settings'); ?>
             
+            <h2><?php echo esc_html__('General Settings', 'lcd-theme'); ?></h2>
             <table class="form-table">
                 <tr>
                     <th scope="row">
@@ -183,6 +310,96 @@ function lcd_fb_tracking_settings_page() {
                 </tr>
             </table>
             
+            <hr>
+            
+            <h2><?php echo esc_html__('Advanced Matching', 'lcd-theme'); ?></h2>
+            <p><?php echo esc_html__('Advanced Matching helps improve conversion tracking by sending hashed user data to Facebook. All data is automatically hashed using SHA-256 before being sent.', 'lcd-theme'); ?></p>
+            
+            <table class="form-table">
+                <tr>
+                    <th scope="row">
+                        <label for="lcd_fb_advanced_matching_enabled"><?php echo esc_html__('Enable Advanced Matching', 'lcd-theme'); ?></label>
+                    </th>
+                    <td>
+                        <input type="checkbox" name="lcd_fb_advanced_matching_enabled" id="lcd_fb_advanced_matching_enabled" value="1" <?php checked(1, get_option('lcd_fb_advanced_matching_enabled', 0)); ?>>
+                        <p class="description"><?php echo esc_html__('Enable Advanced Matching to send user data with pixel events.', 'lcd-theme'); ?></p>
+                    </td>
+                </tr>
+            </table>
+            
+            <div class="lcd-fb-info-box">
+                <strong><?php echo esc_html__('Data Sources:', 'lcd-theme'); ?></strong>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li><strong><?php echo esc_html__('WordPress User', 'lcd-theme'); ?>:</strong> <?php echo esc_html__('Uses logged-in user data (email, name, etc.)', 'lcd-theme'); ?></li>
+                    <li><strong><?php echo esc_html__('Auto-Detect (Query Params)', 'lcd-theme'); ?>:</strong> <?php echo esc_html__('Reads from URL query parameters (e.g., ?em=email@example.com)', 'lcd-theme'); ?></li>
+                    <li><strong><?php echo esc_html__('Manual Value', 'lcd-theme'); ?>:</strong> <?php echo esc_html__('Uses a fixed value you specify', 'lcd-theme'); ?></li>
+                </ul>
+            </div>
+            
+            <table class="widefat lcd-fb-advanced-matching-table">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;"><?php echo esc_html__('Enable', 'lcd-theme'); ?></th>
+                        <th style="width: 150px;"><?php echo esc_html__('Field', 'lcd-theme'); ?></th>
+                        <th style="width: 180px;"><?php echo esc_html__('Data Source', 'lcd-theme'); ?></th>
+                        <th><?php echo esc_html__('Configuration', 'lcd-theme'); ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($matching_fields as $field_key => $field_data) : 
+                        $field_settings = isset($advanced_matching[$field_key]) ? $advanced_matching[$field_key] : array();
+                        $enabled = !empty($field_settings['enabled']);
+                        $source = isset($field_settings['source']) ? $field_settings['source'] : 'auto';
+                        $query_key = isset($field_settings['query_key']) ? $field_settings['query_key'] : $field_key;
+                        $manual_value = isset($field_settings['manual_value']) ? $field_settings['manual_value'] : '';
+                    ?>
+                    <tr class="lcd-fb-am-row">
+                        <td>
+                            <input type="checkbox" 
+                                   name="lcd_fb_advanced_matching[<?php echo esc_attr($field_key); ?>][enabled]" 
+                                   value="1" 
+                                   <?php checked($enabled); ?>
+                                   class="lcd-fb-am-enable">
+                        </td>
+                        <td>
+                            <strong><?php echo esc_html($field_data['label']); ?></strong>
+                            <code style="font-size: 11px; margin-left: 5px;"><?php echo esc_html($field_key); ?></code>
+                            <p class="description"><?php echo esc_html($field_data['description']); ?></p>
+                        </td>
+                        <td>
+                            <select name="lcd_fb_advanced_matching[<?php echo esc_attr($field_key); ?>][source]" class="lcd-fb-am-source">
+                                <?php if ($field_data['supports_wp_user']) : ?>
+                                <option value="wp_user" <?php selected($source, 'wp_user'); ?>><?php echo esc_html__('WordPress User', 'lcd-theme'); ?></option>
+                                <?php endif; ?>
+                                <option value="auto" <?php selected($source, 'auto'); ?>><?php echo esc_html__('Auto-Detect (Query Params)', 'lcd-theme'); ?></option>
+                                <option value="manual" <?php selected($source, 'manual'); ?>><?php echo esc_html__('Manual Value', 'lcd-theme'); ?></option>
+                            </select>
+                        </td>
+                        <td>
+                            <div class="lcd-fb-am-source-fields lcd-fb-am-auto <?php echo $source === 'auto' ? 'active' : ''; ?>">
+                                <label><?php echo esc_html__('Query Parameter Key:', 'lcd-theme'); ?></label>
+                                <input type="text" 
+                                       name="lcd_fb_advanced_matching[<?php echo esc_attr($field_key); ?>][query_key]" 
+                                       value="<?php echo esc_attr($query_key); ?>" 
+                                       placeholder="<?php echo esc_attr($field_key); ?>"
+                                       class="regular-text">
+                            </div>
+                            <div class="lcd-fb-am-source-fields lcd-fb-am-manual <?php echo $source === 'manual' ? 'active' : ''; ?>">
+                                <label><?php echo esc_html__('Fixed Value:', 'lcd-theme'); ?></label>
+                                <input type="text" 
+                                       name="lcd_fb_advanced_matching[<?php echo esc_attr($field_key); ?>][manual_value]" 
+                                       value="<?php echo esc_attr($manual_value); ?>" 
+                                       class="regular-text">
+                            </div>
+                            <div class="lcd-fb-am-source-fields lcd-fb-am-wp_user <?php echo $source === 'wp_user' ? 'active' : ''; ?>">
+                                <span class="description"><?php echo esc_html__('Will use data from logged-in WordPress user.', 'lcd-theme'); ?></span>
+                            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+            
             <?php submit_button(); ?>
         </form>
         
@@ -201,7 +418,24 @@ function lcd_fb_tracking_settings_page() {
         <p><?php echo esc_html__('If you set "value" to auto-detect with query key "value", visiting:', 'lcd-theme'); ?></p>
         <code>yoursite.com/thank-you/?value=2000&num_items=2</code>
         <p><?php echo esc_html__('Will fire the event with value=2000 and num_items=2.', 'lcd-theme'); ?></p>
+        
+        <h3><?php echo esc_html__('Advanced Matching Example', 'lcd-theme'); ?></h3>
+        <p><?php echo esc_html__('With email auto-detect enabled, visiting:', 'lcd-theme'); ?></p>
+        <code>yoursite.com/thank-you/?em=john@example.com&value=2000</code>
+        <p><?php echo esc_html__('Will include the hashed email in the pixel initialization for better conversion matching.', 'lcd-theme'); ?></p>
     </div>
+    
+    <script>
+    jQuery(function($) {
+        // Handle source change
+        $('.lcd-fb-am-source').on('change', function() {
+            var source = $(this).val();
+            var row = $(this).closest('tr');
+            row.find('.lcd-fb-am-source-fields').removeClass('active');
+            row.find('.lcd-fb-am-' + source).addClass('active');
+        });
+    });
+    </script>
     <?php
 }
 
@@ -610,6 +844,10 @@ function lcd_fb_output_pixel_base() {
         echo "<!-- Facebook Pixel disabled for admins in debug mode -->\n";
         return;
     }
+    
+    // Build Advanced Matching data
+    $advanced_matching_data = lcd_fb_get_advanced_matching_data();
+    $has_matching_data = !empty($advanced_matching_data);
     ?>
     <!-- Facebook Pixel Code -->
     <script>
@@ -621,7 +859,46 @@ function lcd_fb_output_pixel_base() {
         t.src=v;s=b.getElementsByTagName(e)[0];
         s.parentNode.insertBefore(t,s)}(window, document,'script',
         'https://connect.facebook.net/en_US/fbevents.js');
+        <?php if ($has_matching_data) : ?>
+        // Advanced Matching enabled
+        (function() {
+            var advancedMatchingConfig = <?php echo json_encode($advanced_matching_data['config']); ?>;
+            var matchingData = {};
+            
+            // Process each configured field
+            for (var key in advancedMatchingConfig) {
+                var config = advancedMatchingConfig[key];
+                var value = null;
+                
+                if (config.source === 'auto') {
+                    // Get from URL query parameters
+                    var params = new URLSearchParams(window.location.search);
+                    value = params.get(config.query_key || key);
+                } else if (config.source === 'wp_user' && config.wp_value) {
+                    // Use WordPress user value
+                    value = config.wp_value;
+                } else if (config.source === 'manual' && config.manual_value) {
+                    // Use manual value
+                    value = config.manual_value;
+                }
+                
+                if (value && value.trim() !== '') {
+                    // Normalize values per Facebook requirements
+                    value = value.toString().toLowerCase().trim();
+                    matchingData[key] = value;
+                }
+            }
+            
+            // Initialize with Advanced Matching data if any values found
+            if (Object.keys(matchingData).length > 0) {
+                fbq('init', '<?php echo esc_js($pixel_id); ?>', matchingData);
+            } else {
+                fbq('init', '<?php echo esc_js($pixel_id); ?>');
+            }
+        })();
+        <?php else : ?>
         fbq('init', '<?php echo esc_js($pixel_id); ?>');
+        <?php endif; ?>
         fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
@@ -631,6 +908,77 @@ function lcd_fb_output_pixel_base() {
     <?php
 }
 add_action('wp_head', 'lcd_fb_output_pixel_base', 1);
+
+/**
+ * Get Advanced Matching data configuration
+ */
+function lcd_fb_get_advanced_matching_data() {
+    // Check if advanced matching is enabled
+    if (!get_option('lcd_fb_advanced_matching_enabled', 0)) {
+        return array();
+    }
+    
+    $settings = get_option('lcd_fb_advanced_matching', array());
+    if (empty($settings)) {
+        return array();
+    }
+    
+    $config = array();
+    $current_user = wp_get_current_user();
+    
+    foreach ($settings as $field_key => $field_settings) {
+        if (empty($field_settings['enabled'])) {
+            continue;
+        }
+        
+        $source = isset($field_settings['source']) ? $field_settings['source'] : 'auto';
+        
+        $field_config = array(
+            'source' => $source,
+        );
+        
+        // Add source-specific configuration
+        switch ($source) {
+            case 'wp_user':
+                // Get value from current logged-in user
+                if ($current_user->ID > 0) {
+                    switch ($field_key) {
+                        case 'em':
+                            $field_config['wp_value'] = $current_user->user_email;
+                            break;
+                        case 'fn':
+                            $field_config['wp_value'] = $current_user->first_name;
+                            break;
+                        case 'ln':
+                            $field_config['wp_value'] = $current_user->last_name;
+                            break;
+                        case 'external_id':
+                            $field_config['wp_value'] = (string) $current_user->ID;
+                            break;
+                    }
+                }
+                break;
+                
+            case 'auto':
+                $field_config['query_key'] = isset($field_settings['query_key']) ? $field_settings['query_key'] : $field_key;
+                break;
+                
+            case 'manual':
+                $field_config['manual_value'] = isset($field_settings['manual_value']) ? $field_settings['manual_value'] : '';
+                break;
+        }
+        
+        $config[$field_key] = $field_config;
+    }
+    
+    if (empty($config)) {
+        return array();
+    }
+    
+    return array(
+        'config' => $config,
+    );
+}
 
 /**
  * Output page-specific tracking events in footer
