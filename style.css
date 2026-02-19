@@ -1409,9 +1409,7 @@ button:hover {
 .page-template .entry-content img {
     max-width: 100%;
     height: auto;
-    margin: var(--spacing-md) 0;
-    border-radius: var(--border-radius);
-    box-shadow: var(--box-shadow);
+
 }
 
 .page-template .entry-content blockquote {
