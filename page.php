@@ -37,7 +37,14 @@ get_header();
                             <span class="current"><?php the_title(); ?></span>
                         </div>
                     <?php endif; ?>
-                    <?php the_title('<h1 class="entry-title">', '</h1>'); ?>
+                    <?php
+                    $display_title = get_post_meta(get_the_ID(), '_lcd_display_title', true);
+                    if ($display_title) {
+                        echo '<h1 class="entry-title">' . esc_html($display_title) . '</h1>';
+                    } else {
+                        the_title('<h1 class="entry-title">', '</h1>');
+                    }
+                    ?>
                 </div>
             </header>
 

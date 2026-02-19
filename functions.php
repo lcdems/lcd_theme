@@ -365,6 +365,78 @@ function lcd_admin_scripts($hook) {
 add_action('admin_enqueue_scripts', 'lcd_admin_scripts');
 
 /**
+ * Page Options meta box (display title, full-width content)
+ */
+function lcd_add_page_options_meta_box() {
+    add_meta_box(
+        'lcd_page_options',
+        __('Page Options', 'lcd-theme'),
+        'lcd_page_options_meta_box_callback',
+        'page',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'lcd_add_page_options_meta_box');
+
+function lcd_page_options_meta_box_callback($post) {
+    wp_nonce_field('lcd_page_options_nonce', 'lcd_page_options_nonce_field');
+
+    $display_title  = get_post_meta($post->ID, '_lcd_display_title', true);
+    $full_width     = get_post_meta($post->ID, 'full_width_content', true);
+    ?>
+    <table class="form-table">
+        <tr>
+            <th scope="row">
+                <label for="lcd_display_title"><?php esc_html_e('Display Title', 'lcd-theme'); ?></label>
+            </th>
+            <td>
+                <input type="text" id="lcd_display_title" name="lcd_display_title" value="<?php echo esc_attr($display_title); ?>" class="widefat" placeholder="<?php esc_attr_e('Leave blank to use the default page title', 'lcd-theme'); ?>">
+                <p class="description"><?php esc_html_e('If set, this title will be shown on the front-end instead of the page title.', 'lcd-theme'); ?></p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row"><?php esc_html_e('Layout', 'lcd-theme'); ?></th>
+            <td>
+                <label for="lcd_full_width_content">
+                    <input type="checkbox" id="lcd_full_width_content" name="lcd_full_width_content" value="1" <?php checked($full_width, '1'); ?>>
+                    <?php esc_html_e('Full-width content (no max-width constraint)', 'lcd-theme'); ?>
+                </label>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+function lcd_save_page_options_meta($post_id) {
+    if (!isset($_POST['lcd_page_options_nonce_field']) ||
+        !wp_verify_nonce($_POST['lcd_page_options_nonce_field'], 'lcd_page_options_nonce')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (!current_user_can('edit_page', $post_id)) {
+        return;
+    }
+
+    $display_title = isset($_POST['lcd_display_title']) ? sanitize_text_field($_POST['lcd_display_title']) : '';
+    if (empty($display_title)) {
+        delete_post_meta($post_id, '_lcd_display_title');
+    } else {
+        update_post_meta($post_id, '_lcd_display_title', $display_title);
+    }
+
+    $full_width = isset($_POST['lcd_full_width_content']) ? '1' : '';
+    if (empty($full_width)) {
+        delete_post_meta($post_id, 'full_width_content');
+    } else {
+        update_post_meta($post_id, 'full_width_content', '1');
+    }
+}
+add_action('save_post_page', 'lcd_save_page_options_meta');
+
+/**
  * Add custom classes to body
  */
 function lcd_body_classes($classes) {
