@@ -1,0 +1,671 @@
+/**
+ * Medical Debt Relief Landing Page
+ * Used by page-medical-debt.php (Template Name: Medical Debt Relief Landing)
+ *
+ * Deliberately more distinct / campaign-style than the rest of the site,
+ * but built on the theme's color variables and fonts.
+ */
+
+.mdr-page {
+    --mdr-navy: var(--color-secondary, #002B50);
+    --mdr-navy-deep: #001a31;
+    --mdr-blue: var(--color-primary, #2a5fb4);
+    --mdr-accent: var(--color-accent, #ee8f13);
+    --mdr-paper: #f6f9fc;
+    font-size: 1.0625rem;
+    overflow-x: hidden;
+}
+
+/* Break out of any content-width constraints from the theme */
+.mdr-page > section {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+}
+
+.mdr-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+}
+
+.mdr-narrow {
+    max-width: 760px;
+}
+
+.mdr-center {
+    text-align: center;
+}
+
+.mdr-section {
+    padding: 4.5rem 0;
+}
+
+.mdr-page h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    margin-top: 0;
+}
+
+/* ---------- Buttons ---------- */
+.mdr-button {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    padding: 0.9rem 2rem;
+    border-radius: 999px;
+    background: var(--mdr-blue);
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.mdr-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+    color: #fff;
+}
+
+.mdr-button-accent {
+    background: var(--mdr-accent);
+    color: var(--mdr-navy-deep);
+}
+
+.mdr-button-accent:hover {
+    background: #ffa227;
+    color: var(--mdr-navy-deep);
+}
+
+.mdr-button-xl {
+    font-size: 1.25rem;
+    padding: 1.15rem 2.75rem;
+}
+
+.mdr-button-outline {
+    background: transparent;
+    border: 2px solid var(--mdr-blue);
+    color: var(--mdr-blue);
+    box-shadow: none;
+}
+
+.mdr-button-outline:hover {
+    background: var(--mdr-blue);
+    color: #fff;
+}
+
+.mdr-cta-note {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.85;
+}
+
+/* ---------- Hero ---------- */
+.mdr-hero {
+    position: relative;
+    background: linear-gradient(150deg, var(--mdr-navy-deep) 0%, var(--mdr-navy) 55%, #0b4a86 100%);
+    color: #fff;
+    padding: 6rem 0 5.5rem;
+    text-align: center;
+}
+
+/* Subtle radial glow behind the headline */
+.mdr-hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 35%, rgba(42, 95, 180, 0.45), transparent 70%),
+        radial-gradient(ellipse 30% 30% at 85% 80%, rgba(238, 143, 19, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.mdr-hero-inner {
+    position: relative;
+    max-width: 880px;
+}
+
+.mdr-hero-kicker {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--mdr-accent);
+    margin-bottom: 1.25rem;
+}
+
+.mdr-hero-title {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 1.08;
+    color: #fff;
+    margin: 0 0 1.5rem;
+}
+
+.mdr-hero-lead {
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.4;
+    max-width: 720px;
+    margin: 0 auto 1rem;
+}
+
+.mdr-hero-sub {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 680px;
+    margin: 0 auto 2.25rem;
+}
+
+/* ---------- Giant multiplier ---------- */
+.mdr-multiplier {
+    background: var(--mdr-navy-deep);
+    color: #fff;
+    padding: 3.5rem 0 4rem;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdr-multiplier-visual {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.mdr-multiplier-from {
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    color: #fff;
+}
+
+.mdr-multiplier-arrow {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.mdr-multiplier-to {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.mdr-multiplier-to strong {
+    display: inline-block;
+    font-size: clamp(3.5rem, 10vw, 6.5rem);
+    color: var(--mdr-accent);
+    margin-left: 0.35rem;
+}
+
+.mdr-multiplier-caption {
+    margin: 1.75rem auto 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ---------- Impact cards ---------- */
+.mdr-impact {
+    background: var(--mdr-paper);
+    padding: 4.5rem 0;
+}
+
+.mdr-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.mdr-card {
+    background: #fff;
+    border-radius: 12px;
+    border-top: 5px solid var(--mdr-accent);
+    box-shadow: 0 6px 18px rgba(0, 43, 80, 0.08);
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+.mdr-card-figure {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--mdr-navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+}
+
+.mdr-card-arrow {
+    color: var(--mdr-accent);
+}
+
+.mdr-card p {
+    margin: 0;
+    color: var(--color-text-light, #666);
+}
+
+.mdr-impact-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+}
+
+/* ---------- Two-column sections ---------- */
+.mdr-two-col {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.mdr-two-col-reverse {
+    grid-template-columns: 2fr 3fr;
+}
+
+.mdr-col-text h2 {
+    margin-bottom: 1.25rem;
+}
+
+.mdr-checklist {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+}
+
+.mdr-checklist li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+}
+
+.mdr-checklist li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--mdr-accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.mdr-standalone {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mdr-navy);
+    margin-bottom: 0;
+}
+
+/* ---------- Placeholder media ---------- */
+.mdr-placeholder-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(
+        45deg,
+        #e3ebf3,
+        #e3ebf3 12px,
+        #d6e1ec 12px,
+        #d6e1ec 24px
+    );
+    border: 2px dashed #a9bdd1;
+    border-radius: 12px;
+    color: #5a7186;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem;
+    min-height: 260px;
+}
+
+.mdr-placeholder-tall {
+    min-height: 340px;
+}
+
+.mdr-placeholder-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 64px;
+    border: 2px dashed #a9bdd1;
+    border-radius: 8px;
+    color: #5a7186;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background: #eef3f8;
+}
+
+/* ---------- How it works ---------- */
+.mdr-how {
+    background: #fff;
+}
+
+.mdr-how-explain {
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.mdr-ladder {
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+}
+
+.mdr-ladder-row {
+    display: grid;
+    grid-template-columns: 90px 40px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.25rem;
+    border-radius: 10px;
+    background: var(--mdr-paper);
+    margin-bottom: 0.6rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.mdr-ladder-give {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--mdr-blue);
+    text-align: right;
+}
+
+.mdr-ladder-arrow {
+    color: var(--mdr-accent);
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.mdr-ladder-get {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--mdr-navy);
+}
+
+.mdr-how-kicker {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mdr-how-kicker strong {
+    color: var(--mdr-accent);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+}
+
+/* ---------- Why LCD ---------- */
+.mdr-why {
+    background: var(--mdr-paper);
+}
+
+/* ---------- Leading the way ---------- */
+.mdr-leading {
+    background: var(--mdr-navy);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mdr-leading h2 {
+    color: #fff;
+}
+
+.mdr-pullquote {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--mdr-accent);
+    border: none;
+    margin: 2rem auto;
+    padding: 0;
+}
+
+/* ---------- Donate section ---------- */
+.mdr-donate {
+    background: #fff;
+    scroll-margin-top: 100px;
+}
+
+.mdr-donate-lead {
+    max-width: 640px;
+    margin: 0 auto 2.5rem;
+    font-size: 1.15rem;
+}
+
+.mdr-donate-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+}
+
+.mdr-donate-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 1.75rem 1rem;
+    border-radius: 12px;
+    background: var(--mdr-navy);
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.mdr-donate-tile:hover {
+    transform: translateY(-4px);
+    background: var(--mdr-blue);
+    box-shadow: 0 10px 24px rgba(0, 43, 80, 0.25);
+    color: #fff;
+}
+
+.mdr-donate-give {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--mdr-accent);
+    line-height: 1;
+}
+
+.mdr-donate-get {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.mdr-donate-cta {
+    text-align: center;
+}
+
+/* ---------- FAQ ---------- */
+.mdr-faq {
+    background: var(--mdr-paper);
+}
+
+.mdr-faq h2 {
+    margin-bottom: 2rem;
+}
+
+.mdr-faq-item {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 43, 80, 0.06);
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+}
+
+.mdr-faq-item summary {
+    cursor: pointer;
+    padding: 1.1rem 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: var(--mdr-navy);
+    list-style: none;
+    position: relative;
+    padding-right: 3rem;
+}
+
+.mdr-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.mdr-faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--mdr-accent);
+    transition: transform 0.2s ease;
+}
+
+.mdr-faq-item[open] summary::after {
+    content: "\2212";
+}
+
+.mdr-faq-item p {
+    padding: 0 1.5rem 1.25rem;
+    margin: 0;
+    color: var(--color-text-light, #666);
+}
+
+/* ---------- Final CTA ---------- */
+.mdr-final-cta {
+    background: linear-gradient(150deg, #0b4a86 0%, var(--mdr-navy) 50%, var(--mdr-navy-deep) 100%);
+    color: #fff;
+    padding: 5rem 0;
+}
+
+.mdr-final-line {
+    font-size: 1.15rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.85);
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+}
+
+.mdr-final-cta h2 {
+    color: #fff;
+    max-width: 760px;
+    margin: 0 auto 2.25rem;
+}
+
+.mdr-final-cta .mdr-cta-note {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- Stories (secondary) ---------- */
+.mdr-stories {
+    background: #fff;
+    padding: 3.5rem 0;
+}
+
+.mdr-stories h2 {
+    font-size: 1.6rem;
+}
+
+.mdr-stories p {
+    color: var(--color-text-light, #666);
+    margin-bottom: 1.75rem;
+}
+
+/* ---------- Partners ---------- */
+.mdr-partners {
+    background: var(--mdr-paper);
+    border-top: 1px solid var(--color-border, #e5e5e5);
+    padding: 3rem 0;
+}
+
+.mdr-partners-lead {
+    font-size: 1.05rem;
+    margin-bottom: 1.75rem;
+}
+
+.mdr-partner-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1.75rem;
+}
+
+.mdr-partners-note {
+    max-width: 620px;
+    margin: 0 auto;
+    font-size: 0.9rem;
+    color: var(--color-text-light, #666);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .mdr-donate-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mdr-section {
+        padding: 3.25rem 0;
+    }
+
+    .mdr-hero {
+        padding: 4rem 0 3.5rem;
+    }
+
+    .mdr-card-grid {
+        grid-template-columns: 1fr;
+        max-width: 460px;
+        margin: 0 auto;
+    }
+
+    .mdr-two-col,
+    .mdr-two-col-reverse {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* Keep text above image on mobile for the reversed layout */
+    .mdr-two-col-reverse .mdr-col-media {
+        order: 2;
+    }
+
+    .mdr-placeholder-img,
+    .mdr-placeholder-tall {
+        min-height: 200px;
+    }
+
+    .mdr-ladder-row {
+        grid-template-columns: 70px 30px 1fr;
+        padding: 0.75rem 1rem;
+    }
+
+    .mdr-ladder-give {
+        font-size: 1.3rem;
+    }
+
+    .mdr-ladder-get {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .mdr-donate-grid {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+    }
+
+    .mdr-button-xl {
+        font-size: 1.1rem;
+        padding: 1rem 2rem;
+        width: 100%;
+    }
+}

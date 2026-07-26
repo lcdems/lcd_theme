@@ -335,6 +335,16 @@ function lcd_scripts() {
         );
     }
 
+    // Enqueue medical debt relief landing page styles
+    if (is_page_template('page-medical-debt.php')) {
+        wp_enqueue_style(
+            'lcd-medical-debt',
+            get_template_directory_uri() . '/css/medical-debt.css',
+            array('lcd-style'),
+            wp_get_theme()->get('Version')
+        );
+    }
+
     if (is_singular() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
