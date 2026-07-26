@@ -538,6 +538,34 @@
     color: var(--color-text-light, #666);
 }
 
+/* ---------- The bigger picture ---------- */
+.mdr-bigger {
+    background: #fff;
+}
+
+.mdr-bigger h2 {
+    margin-bottom: 1.5rem;
+    position: relative;
+    padding-bottom: 1.25rem;
+}
+
+.mdr-bigger h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 72px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--mdr-accent);
+}
+
+.mdr-bigger p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
 /* ---------- Final CTA ---------- */
 .mdr-final-cta {
     background: linear-gradient(150deg, #0b4a86 0%, var(--mdr-navy) 50%, var(--mdr-navy-deep) 100%);

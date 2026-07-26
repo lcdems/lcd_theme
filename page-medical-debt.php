@@ -25,10 +25,10 @@ $story_url  = 'https://dems.work/tell-my-story';
             <p class="mdr-hero-kicker"><?php esc_html_e('A Lewis County Democrats Project', 'lcd-theme'); ?></p>
             <h1 class="mdr-hero-title"><?php esc_html_e('Help Us Wipe Out Medical Debt in Lewis County', 'lcd-theme'); ?></h1>
             <p class="mdr-hero-lead">
-                <?php esc_html_e('For every $1 we raise, up to $200 in qualifying medical debt can be forgiven for our Lewis County neighbors.', 'lcd-theme'); ?>
+                <?php esc_html_e('For every $1 we raise, up to $200 in qualifying medical debt can be forgiven for our neighbors here in Lewis County and across Washington.', 'lcd-theme'); ?>
             </p>
             <p class="mdr-hero-sub">
-                <?php esc_html_e('The Lewis County Democrats are leading a first-of-its-kind effort in Washington to turn small donations into life-changing relief — with support from Dems Work and Contest Every Race.', 'lcd-theme'); ?>
+                <?php esc_html_e('The Lewis County Democrats are leading a first-of-its-kind effort in Washington to turn small donations into life-changing relief, with support from Dems Work and Contest Every Race.', 'lcd-theme'); ?>
             </p>
             <div class="mdr-hero-cta">
                 <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help Erase Medical Debt', 'lcd-theme'); ?></a>
@@ -62,8 +62,8 @@ $story_url  = 'https://dems.work/tell-my-story';
                     <p><?php esc_html_e("People whose debt is forgiven don't apply, don't owe us anything, and don't have to pay it back.", 'lcd-theme'); ?></p>
                 </div>
                 <div class="mdr-card">
-                    <div class="mdr-card-figure"><?php esc_html_e('Right Here in Lewis County', 'lcd-theme'); ?></div>
-                    <p><?php esc_html_e('Money raised through this campaign will be used to relieve qualifying medical debt for people in our community.', 'lcd-theme'); ?></p>
+                    <div class="mdr-card-figure"><?php esc_html_e('Right Here at Home', 'lcd-theme'); ?></div>
+                    <p><?php esc_html_e('Money raised through this campaign is guaranteed to relieve qualifying medical debt in Washington State, with our Lewis County neighbors prioritized.', 'lcd-theme'); ?></p>
                 </div>
             </div>
             <div class="mdr-impact-cta">
@@ -142,11 +142,11 @@ $story_url  = 'https://dems.work/tell-my-story';
             <h2><?php esc_html_e('Lewis County Is Leading the Way', 'lcd-theme'); ?></h2>
             <p><?php esc_html_e('Local Democratic organizations around the country are participating in this effort.', 'lcd-theme'); ?></p>
             <p><?php esc_html_e('Here in Washington, the Lewis County Democrats are the first and only local Democratic Party organization participating.', 'lcd-theme'); ?></p>
-            <p><?php esc_html_e("We're proud that a rural county is leading the way — and even prouder that the people who benefit won't be chosen based on politics.", 'lcd-theme'); ?></p>
+            <p><?php esc_html_e("We're proud that a rural county is leading the way. We're even prouder that the people who benefit won't be chosen based on politics.", 'lcd-theme'); ?></p>
             <blockquote class="mdr-pullquote">
                 <?php esc_html_e("Medical debt doesn't care how you vote. Neither does this project.", 'lcd-theme'); ?>
             </blockquote>
-            <p><?php esc_html_e("Republican, Democrat, independent or none of the above — if your qualifying debt is selected for relief, it's forgiven. Period.", 'lcd-theme'); ?></p>
+            <p><?php esc_html_e("Republican, Democrat, independent or none of the above: if your qualifying debt is selected for relief, it's forgiven. Period.", 'lcd-theme'); ?></p>
         </div>
     </section>
 
@@ -189,7 +189,12 @@ $story_url  = 'https://dems.work/tell-my-story';
 
             <details class="mdr-faq-item">
                 <summary><?php esc_html_e('Who receives the relief?', 'lcd-theme'); ?></summary>
-                <p><?php esc_html_e("Qualifying medical debt belonging to people in Lewis County is identified through the program. Individuals don't need to apply or ask for assistance.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("Qualifying medical debt belonging to Washington residents is identified through the program, and debt belonging to our Lewis County neighbors is prioritized. Individuals don't need to apply or ask for assistance.", 'lcd-theme'); ?></p>
+            </details>
+
+            <details class="mdr-faq-item">
+                <summary><?php esc_html_e('Does my donation stay in Lewis County?', 'lcd-theme'); ?></summary>
+                <p><?php esc_html_e('Every dollar raised through this campaign is guaranteed to relieve qualifying medical debt in Washington State. Debt belonging to Lewis County residents is prioritized as it becomes available for relief.', 'lcd-theme'); ?></p>
             </details>
 
             <details class="mdr-faq-item">
@@ -214,10 +219,19 @@ $story_url  = 'https://dems.work/tell-my-story';
         </div>
     </section>
 
+    <!-- ============ THE BIGGER PICTURE ============ -->
+    <section class="mdr-section mdr-bigger">
+        <div class="mdr-container mdr-narrow mdr-center">
+            <h2><?php esc_html_e("You Shouldn't Go Into Debt for Getting Sick.", 'lcd-theme'); ?></h2>
+            <p><?php esc_html_e('But in America, that outcome is far too familiar. In communities across the country, Democrats are raising money to relieve medical debt while shining a light on the high cost of healthcare and collecting the stories of the people living through it.', 'lcd-theme'); ?></p>
+            <p><?php esc_html_e("Together, we can help families today while building the momentum to fix the system for good. That's how we help our neighbors, create lasting change, and ensure that getting sick no longer means falling into debt.", 'lcd-theme'); ?></p>
+        </div>
+    </section>
+
     <!-- ============ FINAL CTA ============ -->
     <section class="mdr-final-cta">
         <div class="mdr-container mdr-center">
-            <p class="mdr-final-line"><?php esc_html_e('Imagine opening a letter expecting another medical bill — and learning instead that the debt is gone.', 'lcd-theme'); ?></p>
+            <p class="mdr-final-line"><?php esc_html_e('Imagine opening a letter expecting another medical bill, and learning instead that the debt is gone.', 'lcd-theme'); ?></p>
             <h2><?php esc_html_e("We can't erase every medical bill. Together, we can erase a lot of them.", 'lcd-theme'); ?></h2>
             <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help a Neighbor Start Over', 'lcd-theme'); ?></a>
             <p class="mdr-cta-note"><?php esc_html_e("Your $10 could erase someone's $2,000 medical bill.", 'lcd-theme'); ?></p>
@@ -238,7 +252,10 @@ $story_url  = 'https://dems.work/tell-my-story';
         <div class="mdr-container mdr-center">
             <p class="mdr-partners-lead">
                 <strong><?php esc_html_e('Led by the Lewis County Democrats', 'lcd-theme'); ?></strong><br>
-                <?php esc_html_e('In partnership with Dems Work and Contest Every Race.', 'lcd-theme'); ?>
+                <?php esc_html_e('In partnership with', 'lcd-theme'); ?>
+                <a href="https://dems.work/" target="_blank" rel="noopener"><?php esc_html_e('Dems Work', 'lcd-theme'); ?></a>
+                <?php esc_html_e('and', 'lcd-theme'); ?>
+                <a href="https://www.contesteveryrace.com/" target="_blank" rel="noopener"><?php esc_html_e('Contest Every Race', 'lcd-theme'); ?></a>.
             </p>
             <div class="mdr-partner-logos">
                 <!-- PLACEHOLDER LOGOS: LCD logo, Dems Work logo, Contest Every Race logo -->
@@ -247,8 +264,10 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <div class="mdr-placeholder-logo"><span><?php esc_html_e('Contest Every Race logo', 'lcd-theme'); ?></span></div>
             </div>
             <p class="mdr-partners-note">
-                <?php esc_html_e('Dems Work is a program of Contest Every Race, which supports local Democratic organizations around the country with funding and infrastructure for year-round community organizing.', 'lcd-theme'); ?>
-                <a href="https://dems.work" target="_blank" rel="noopener"><?php esc_html_e('Learn more at dems.work', 'lcd-theme'); ?></a>
+                <a href="https://dems.work/" target="_blank" rel="noopener"><?php esc_html_e('Dems Work', 'lcd-theme'); ?></a>
+                <?php esc_html_e('is a program of', 'lcd-theme'); ?>
+                <a href="https://www.contesteveryrace.com/" target="_blank" rel="noopener"><?php esc_html_e('Contest Every Race', 'lcd-theme'); ?></a>,
+                <?php esc_html_e('which supports local Democratic organizations around the country with funding and infrastructure for year-round community organizing.', 'lcd-theme'); ?>
             </p>
         </div>
     </section>
