@@ -37,13 +37,16 @@ $story_url  = 'https://dems.work/tell-my-story';
         </div>
     </section>
 
-    <!-- ============ GIANT MULTIPLIER ============ -->
+    <!-- ============ GIANT MULTIPLIER / HOW IT WORKS ============ -->
     <section class="mdr-multiplier">
         <div class="mdr-container">
             <div class="mdr-multiplier-visual" role="img" aria-label="<?php esc_attr_e('One dollar becomes up to two hundred dollars of relief', 'lcd-theme'); ?>">
                 <span class="mdr-multiplier-from">$1</span>
                 <span class="mdr-multiplier-arrow" aria-hidden="true">&rarr;</span>
                 <span class="mdr-multiplier-to">up to <strong>$200</strong></span>
+            </div>
+            <div class="mdr-multiplier-explain">
+                <p><?php esc_html_e('How? Medical debt is often sold for pennies on the dollar after providers have been unable to collect it. That creates an unusual opportunity: instead of buying that debt to collect it, it can be purchased to forgive it.', 'lcd-theme'); ?></p>
             </div>
             <p class="mdr-multiplier-caption"><?php esc_html_e("We aren't paying medical debt. We're making it disappear.", 'lcd-theme'); ?></p>
         </div>
@@ -53,10 +56,6 @@ $story_url  = 'https://dems.work/tell-my-story';
     <section class="mdr-impact">
         <div class="mdr-container">
             <div class="mdr-card-grid">
-                <div class="mdr-card">
-                    <div class="mdr-card-figure">$1 <span class="mdr-card-arrow" aria-hidden="true">&rarr;</span> $200</div>
-                    <p><?php esc_html_e('Every dollar donated can eliminate up to $200 in qualifying medical debt.', 'lcd-theme'); ?></p>
-                </div>
                 <div class="mdr-card">
                     <div class="mdr-card-figure"><?php esc_html_e('100% No Strings Attached', 'lcd-theme'); ?></div>
                     <p><?php esc_html_e("People whose debt is forgiven don't apply, don't owe us anything, and don't have to pay it back.", 'lcd-theme'); ?></p>
@@ -79,7 +78,7 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <h2><?php esc_html_e('Real Relief. No Catch.', 'lcd-theme'); ?></h2>
                 <p><?php esc_html_e('Medical debt can follow someone for years after the illness, injury, or emergency that created it.', 'lcd-theme'); ?></p>
                 <p><strong><?php esc_html_e("We're working to make some of that burden simply disappear.", 'lcd-theme'); ?></strong></p>
-                <p><?php esc_html_e('Through this project, qualifying medical debt can be purchased for a fraction of its original value and forgiven. The person receiving relief pays nothing. There are no strings attached, no repayment and no tax bill from the forgiven debt.', 'lcd-theme'); ?></p>
+                <p><?php esc_html_e('Through this project, qualifying medical debt is purchased and permanently forgiven. The person receiving relief pays nothing. There are no strings attached, no repayment and no tax bill from the forgiven debt.', 'lcd-theme'); ?></p>
                 <ul class="mdr-checklist">
                     <li><?php esc_html_e("They don't have to join anything.", 'lcd-theme'); ?></li>
                     <li><?php esc_html_e("They don't have to support a political party.", 'lcd-theme'); ?></li>
@@ -96,27 +95,6 @@ $story_url  = 'https://dems.work/tell-my-story';
         </div>
     </section>
 
-    <!-- ============ HOW $1 BECOMES $200 ============ -->
-    <section class="mdr-section mdr-how">
-        <div class="mdr-container">
-            <h2 class="mdr-center"><?php esc_html_e('How Does $1 Become $200?', 'lcd-theme'); ?></h2>
-            <div class="mdr-how-explain">
-                <p><?php esc_html_e('Medical debt is often sold for pennies on the dollar after providers have been unable to collect it.', 'lcd-theme'); ?></p>
-                <p><?php esc_html_e('That creates an unusual opportunity: instead of buying that debt to collect it, it can be purchased to forgive it.', 'lcd-theme'); ?></p>
-            </div>
-            <div class="mdr-ladder" role="list">
-                <div class="mdr-ladder-row" role="listitem"><span class="mdr-ladder-give">$5</span><span class="mdr-ladder-arrow" aria-hidden="true">&rarr;</span><span class="mdr-ladder-get"><?php esc_html_e('up to $1,000 erased', 'lcd-theme'); ?></span></div>
-                <div class="mdr-ladder-row" role="listitem"><span class="mdr-ladder-give">$25</span><span class="mdr-ladder-arrow" aria-hidden="true">&rarr;</span><span class="mdr-ladder-get"><?php esc_html_e('up to $5,000 erased', 'lcd-theme'); ?></span></div>
-                <div class="mdr-ladder-row" role="listitem"><span class="mdr-ladder-give">$50</span><span class="mdr-ladder-arrow" aria-hidden="true">&rarr;</span><span class="mdr-ladder-get"><?php esc_html_e('up to $10,000 erased', 'lcd-theme'); ?></span></div>
-                <div class="mdr-ladder-row" role="listitem"><span class="mdr-ladder-give">$100</span><span class="mdr-ladder-arrow" aria-hidden="true">&rarr;</span><span class="mdr-ladder-get"><?php esc_html_e('up to $20,000 erased', 'lcd-theme'); ?></span></div>
-            </div>
-            <p class="mdr-how-kicker mdr-center">
-                <?php esc_html_e("Your donation doesn't make a payment toward someone's bill.", 'lcd-theme'); ?><br>
-                <strong><?php esc_html_e('It can make the bill disappear.', 'lcd-theme'); ?></strong>
-            </p>
-        </div>
-    </section>
-
     <!-- ============ WHY LCD ============ -->
     <section class="mdr-section mdr-why">
         <div class="mdr-container mdr-two-col mdr-two-col-reverse">
@@ -130,8 +108,8 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <h2><?php esc_html_e('Politics Should Be About Helping People', 'lcd-theme'); ?></h2>
                 <p><?php esc_html_e('We believe a local political party should do more than ask for votes.', 'lcd-theme'); ?></p>
                 <p><strong><?php esc_html_e('It should be part of the community it hopes to serve.', 'lcd-theme'); ?></strong></p>
-                <p><?php esc_html_e("That's why the Lewis County Democrats are taking the lead on this project: raising money to relieve medical debt for our neighbors while calling attention to a healthcare system that leaves too many working families owing thousands of dollars simply because someone got sick.", 'lcd-theme'); ?></p>
-                <p><?php esc_html_e("We can't fix America's healthcare system by ourselves. But together, we can make life a little easier for some of our neighbors today.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("You shouldn't go into debt for getting sick. But in America, that outcome is far too familiar. That's why the Lewis County Democrats are taking the lead on this project: raising money to relieve medical debt for our neighbors while shining a light on a healthcare system that leaves too many working families owing thousands of dollars simply because someone got sick.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("Together, we can help families today while building the momentum to fix the system for good. That's how we help our neighbors, create lasting change, and ensure that getting sick no longer means falling into debt.", 'lcd-theme'); ?></p>
             </div>
         </div>
     </section>
@@ -155,7 +133,8 @@ $story_url  = 'https://dems.work/tell-my-story';
         <div class="mdr-container">
             <h2 class="mdr-center"><?php esc_html_e('See How Far Your Donation Can Go', 'lcd-theme'); ?></h2>
             <p class="mdr-center mdr-donate-lead">
-                <?php esc_html_e('A $10 contribution to a normal fundraiser is $10. Here, that same $10 can mean up to $2,000 of medical debt erased for our neighbors.', 'lcd-theme'); ?>
+                <?php esc_html_e("A $10 contribution to a normal fundraiser is $10. Here, that same $10 can mean up to $2,000 of medical debt erased for our neighbors. Your donation doesn't make a payment toward someone's bill.", 'lcd-theme'); ?>
+                <strong><?php esc_html_e('It can make the bill disappear.', 'lcd-theme'); ?></strong>
             </p>
             <div class="mdr-donate-grid">
                 <a href="<?php echo $donate_url; ?>" class="mdr-donate-tile">
@@ -219,15 +198,6 @@ $story_url  = 'https://dems.work/tell-my-story';
         </div>
     </section>
 
-    <!-- ============ THE BIGGER PICTURE ============ -->
-    <section class="mdr-section mdr-bigger">
-        <div class="mdr-container mdr-narrow mdr-center">
-            <h2><?php esc_html_e("You Shouldn't Go Into Debt for Getting Sick.", 'lcd-theme'); ?></h2>
-            <p><?php esc_html_e('But in America, that outcome is far too familiar. In communities across the country, Democrats are raising money to relieve medical debt while shining a light on the high cost of healthcare and collecting the stories of the people living through it.', 'lcd-theme'); ?></p>
-            <p><?php esc_html_e("Together, we can help families today while building the momentum to fix the system for good. That's how we help our neighbors, create lasting change, and ensure that getting sick no longer means falling into debt.", 'lcd-theme'); ?></p>
-        </div>
-    </section>
-
     <!-- ============ FINAL CTA ============ -->
     <section class="mdr-final-cta">
         <div class="mdr-container mdr-center">
@@ -258,10 +228,15 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <a href="https://www.contesteveryrace.com/" target="_blank" rel="noopener"><?php esc_html_e('Contest Every Race', 'lcd-theme'); ?></a>.
             </p>
             <div class="mdr-partner-logos">
-                <!-- PLACEHOLDER LOGOS: LCD logo, Dems Work logo, Contest Every Race logo -->
-                <div class="mdr-placeholder-logo"><span><?php esc_html_e('LCD logo', 'lcd-theme'); ?></span></div>
-                <div class="mdr-placeholder-logo"><span><?php esc_html_e('Dems Work logo', 'lcd-theme'); ?></span></div>
-                <div class="mdr-placeholder-logo"><span><?php esc_html_e('Contest Every Race logo', 'lcd-theme'); ?></span></div>
+                <a href="<?php echo esc_url(home_url('/')); ?>">
+                    <img src="https://lewiscountydemocrats.org/wp-content/uploads/2024/12/LCD-Shape-Logo.png" alt="<?php esc_attr_e('Lewis County Democrats', 'lcd-theme'); ?>" loading="lazy">
+                </a>
+                <a href="https://dems.work/" target="_blank" rel="noopener">
+                    <img src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/Screenshot-2026-07-14-at-9.34.08-AM_20260714133423334329-1.png" alt="<?php esc_attr_e('Democrats Work, a Contest Every Race program', 'lcd-theme'); ?>" loading="lazy">
+                </a>
+                <a href="https://www.contesteveryrace.com/" target="_blank" rel="noopener">
+                    <img src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/cer-logo.jpg" alt="<?php esc_attr_e('Contest Every Race', 'lcd-theme'); ?>" loading="lazy">
+                </a>
             </div>
             <p class="mdr-partners-note">
                 <a href="https://dems.work/" target="_blank" rel="noopener"><?php esc_html_e('Dems Work', 'lcd-theme'); ?></a>
