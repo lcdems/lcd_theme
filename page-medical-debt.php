@@ -69,7 +69,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
             <div class="mdr-col-text">
                 <h2><?php esc_html_e('Real Relief. No Catch.', 'lcd-theme'); ?></h2>
                 <p><?php esc_html_e('Medical debt can follow someone for years after the illness, injury, or emergency that created it.', 'lcd-theme'); ?></p>
-                <p><strong><?php esc_html_e("We're working to make some of that burden simply disappear.", 'lcd-theme'); ?></strong></p>
+                <p><strong><?php esc_html_e("Imagine opening a letter expecting another bill, and learning instead that the debt is gone.", 'lcd-theme'); ?></strong></p>
                 <p><?php esc_html_e('Through this project, qualifying medical debt is purchased and permanently forgiven. The person receiving relief pays nothing. There are no strings attached, no repayment and no tax bill from the forgiven debt.', 'lcd-theme'); ?></p>
                 <ul class="mdr-checklist">
                     <li><?php esc_html_e("They don't have to join anything.", 'lcd-theme'); ?></li>
@@ -95,7 +95,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
                 <p><?php esc_html_e('We believe a local political party should do more than ask for votes.', 'lcd-theme'); ?></p>
                 <p><strong><?php esc_html_e('It should be part of the community it hopes to serve.', 'lcd-theme'); ?></strong></p>
                 <p><?php esc_html_e("That's why the Lewis County Democrats are taking the lead on this project: raising money to relieve medical debt for our neighbors while shining a light on a healthcare system that leaves too many working families owing thousands of dollars.", 'lcd-theme'); ?></p>
-                <p><?php esc_html_e("Together, we can help today while building the momentum to fix the system for good. That's how create lasting change and ensure that getting care no longer means going broke.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("Together, we can help today while building the momentum to fix the system for good. That's how we create lasting change and ensure that getting care no longer means going broke.", 'lcd-theme'); ?></p>
             </div>
         </div>
     </section>
@@ -149,7 +149,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
     <!-- ============ FAQ ============ -->
     <section class="mdr-section mdr-faq">
         <div class="mdr-container mdr-narrow">
-            <h2 class="mdr-center"><?php esc_html_e('Questions? Good. Here Are Answers.', 'lcd-theme'); ?></h2>
+            <h2 class="mdr-center"><?php esc_html_e('Questions? Answers Below.', 'lcd-theme'); ?></h2>
 
             <details class="mdr-faq-item">
                 <summary><?php esc_html_e('Who receives the relief?', 'lcd-theme'); ?></summary>
@@ -183,22 +183,12 @@ foreach (array(10, 25, 50, 100) as $amount) {
         </div>
     </section>
 
-    <!-- ============ FINAL CTA ============ -->
+    <!-- ============ STORY COLLECTION ============ -->
     <section class="mdr-final-cta">
         <div class="mdr-container mdr-center">
-            <p class="mdr-final-line"><?php esc_html_e('Imagine opening a letter expecting another medical bill, and learning instead that the debt is gone.', 'lcd-theme'); ?></p>
-            <h2><?php esc_html_e("We can't erase every medical bill. Together, we can erase a lot of them.", 'lcd-theme'); ?></h2>
-            <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help a Neighbor Start Over', 'lcd-theme'); ?></a>
-            <p class="mdr-cta-note"><?php esc_html_e("Your $10 could erase someone's $2,000 medical bill.", 'lcd-theme'); ?></p>
-        </div>
-    </section>
-
-    <!-- ============ STORY COLLECTION (SECONDARY) ============ -->
-    <section class="mdr-section mdr-stories">
-        <div class="mdr-container mdr-narrow mdr-center">
             <h2><?php esc_html_e('Medical Debt Has a Story, Too', 'lcd-theme'); ?></h2>
-            <p><?php esc_html_e("We're also collecting stories from Lewis County residents about how healthcare costs and medical debt have affected their families. Sharing is completely optional, but your experience can help show why this work matters.", 'lcd-theme'); ?></p>
-            <a href="<?php echo esc_url($story_url); ?>" class="mdr-button mdr-button-outline" target="_blank" rel="noopener"><?php esc_html_e('Share Your Story', 'lcd-theme'); ?></a>
+            <p class="mdr-stories-copy"><?php esc_html_e("We're also collecting stories from Lewis County residents about how healthcare costs and medical debt have affected their families. Sharing is completely optional, but your experience can help show why this work matters.", 'lcd-theme'); ?></p>
+            <a href="<?php echo esc_url($story_url); ?>" class="mdr-button mdr-button-accent mdr-button-xl" target="_blank" rel="noopener"><?php esc_html_e('Share Your Story', 'lcd-theme'); ?></a>
         </div>
     </section>
 
