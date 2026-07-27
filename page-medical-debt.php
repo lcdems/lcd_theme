@@ -6,6 +6,10 @@
  * Set a "donate_url" custom field on the page to point the donate buttons
  * at the real donation platform. Until then they fall back to the #donate anchor.
  *
+ * Optional per-amount custom fields for pre-filled donation links, used by the
+ * "See How Far Your Donation Can Go" tiles (each falls back to donate_url):
+ *   donate_url_10, donate_url_25, donate_url_50, donate_url_100
+ *
  * @package LCD_Theme
  */
 
@@ -14,6 +18,13 @@ get_header();
 $donate_url = get_post_meta(get_the_ID(), 'donate_url', true);
 $donate_url = $donate_url ? esc_url($donate_url) : '#donate';
 $story_url  = 'https://dems.work/tell-my-story';
+
+// Pre-filled amount links, falling back to the general donate URL.
+$donate_amounts = array();
+foreach (array(10, 25, 50, 100) as $amount) {
+    $amount_url = get_post_meta(get_the_ID(), 'donate_url_' . $amount, true);
+    $donate_amounts[$amount] = $amount_url ? esc_url($amount_url) : $donate_url;
+}
 ?>
 
 <main id="primary" class="site-main mdr-page">
@@ -131,19 +142,19 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <strong><?php esc_html_e('It can make the bill disappear.', 'lcd-theme'); ?></strong>
             </p>
             <div class="mdr-donate-grid">
-                <a href="<?php echo $donate_url; ?>" class="mdr-donate-tile">
+                <a href="<?php echo $donate_amounts[10]; ?>" class="mdr-donate-tile">
                     <span class="mdr-donate-give">$10</span>
                     <span class="mdr-donate-get"><?php esc_html_e('up to $2,000 erased', 'lcd-theme'); ?></span>
                 </a>
-                <a href="<?php echo $donate_url; ?>" class="mdr-donate-tile">
+                <a href="<?php echo $donate_amounts[25]; ?>" class="mdr-donate-tile">
                     <span class="mdr-donate-give">$25</span>
                     <span class="mdr-donate-get"><?php esc_html_e('up to $5,000 erased', 'lcd-theme'); ?></span>
                 </a>
-                <a href="<?php echo $donate_url; ?>" class="mdr-donate-tile">
+                <a href="<?php echo $donate_amounts[50]; ?>" class="mdr-donate-tile">
                     <span class="mdr-donate-give">$50</span>
                     <span class="mdr-donate-get"><?php esc_html_e('up to $10,000 erased', 'lcd-theme'); ?></span>
                 </a>
-                <a href="<?php echo $donate_url; ?>" class="mdr-donate-tile">
+                <a href="<?php echo $donate_amounts[100]; ?>" class="mdr-donate-tile">
                     <span class="mdr-donate-give">$100</span>
                     <span class="mdr-donate-get"><?php esc_html_e('up to $20,000 erased', 'lcd-theme'); ?></span>
                 </a>
