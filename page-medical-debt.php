@@ -87,10 +87,7 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <p class="mdr-standalone"><?php esc_html_e('Their debt is simply gone.', 'lcd-theme'); ?></p>
             </div>
             <div class="mdr-col-media">
-                <!-- PLACEHOLDER IMAGE: photo of a Lewis County family / neighbor, or an illustration of a bill stamped "FORGIVEN" -->
-                <div class="mdr-placeholder-img mdr-placeholder-tall">
-                    <span><?php esc_html_e('Image: neighbor / “debt forgiven” visual', 'lcd-theme'); ?></span>
-                </div>
+                <img class="mdr-photo" src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/shutterstock_83597350-1.jpg" alt="<?php esc_attr_e('Green road sign reading Debt Relief Just Ahead against a bright sky', 'lcd-theme'); ?>" loading="lazy">
             </div>
         </div>
     </section>
@@ -99,10 +96,7 @@ $story_url  = 'https://dems.work/tell-my-story';
     <section class="mdr-section mdr-why">
         <div class="mdr-container mdr-two-col mdr-two-col-reverse">
             <div class="mdr-col-media">
-                <!-- PLACEHOLDER IMAGE: LCD volunteers / community event photo -->
-                <div class="mdr-placeholder-img mdr-placeholder-tall">
-                    <span><?php esc_html_e('Image: LCD volunteers in the community', 'lcd-theme'); ?></span>
-                </div>
+                <img class="mdr-photo" src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/helping-hand-icon-symbol-of-support-rescue-and-assistance-two-hands-holding-each-other-icon-for-charity-and-teamwork-vector.jpg" alt="<?php esc_attr_e('Two hands holding each other, a symbol of support and assistance', 'lcd-theme'); ?>" loading="lazy">
             </div>
             <div class="mdr-col-text">
                 <h2><?php esc_html_e('Politics Should Be About Helping People', 'lcd-theme'); ?></h2>
