@@ -141,7 +141,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
             </div>
             <div class="mdr-donate-cta">
                 <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help Erase Medical Debt', 'lcd-theme'); ?></a>
-                <p class="mdr-cta-note"><?php esc_html_e('Where else can you multiplly your impact by 200x?', 'lcd-theme'); ?></p>
+                <p class="mdr-cta-note"><?php esc_html_e('Where else can you multiply your impact by 200X?', 'lcd-theme'); ?></p>
             </div>
         </div>
     </section>
