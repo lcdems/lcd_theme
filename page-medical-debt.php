@@ -43,7 +43,6 @@ foreach (array(10, 25, 50, 100) as $amount) {
             </p>
             <div class="mdr-hero-cta">
                 <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help Erase Medical Debt', 'lcd-theme'); ?></a>
-                <p class="mdr-cta-note"><?php esc_html_e('Every $1 donated can forgive up to $200 in qualifying debt.', 'lcd-theme'); ?></p>
             </div>
         </div>
     </section>
@@ -67,10 +66,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
     <section class="mdr-impact">
         <div class="mdr-container">
             <div class="mdr-card-grid">
-                <div class="mdr-card">
-                    <div class="mdr-card-figure"><?php esc_html_e('100% No Strings Attached', 'lcd-theme'); ?></div>
-                    <p><?php esc_html_e("People whose debt is forgiven don't apply, don't owe us anything, and don't have to pay it back.", 'lcd-theme'); ?></p>
-                </div>
+
                 <div class="mdr-card">
                     <div class="mdr-card-figure"><?php esc_html_e('Right Here at Home', 'lcd-theme'); ?></div>
                     <p><?php esc_html_e('Money raised through this campaign is guaranteed to relieve qualifying medical debt in Washington State, with our Lewis County neighbors prioritized.', 'lcd-theme'); ?></p>
