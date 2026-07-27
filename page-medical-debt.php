@@ -105,8 +105,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
         <div class="mdr-container mdr-narrow mdr-center">
             <h2><?php esc_html_e('Lewis County Is Leading the Way', 'lcd-theme'); ?></h2>
             <p><?php esc_html_e('Local Democratic organizations around the country are participating in this effort.', 'lcd-theme'); ?></p>
-            <p><?php esc_html_e('Here in Washington, the Lewis County Democrats are the first and only local Democratic Party organization participating.', 'lcd-theme'); ?></p>
-            <p><?php esc_html_e("We're proud that a rural county is leading the way. We're even prouder that the people who benefit won't be chosen based on politics.", 'lcd-theme'); ?></p>
+            <p><?php esc_html_e("Here in Washington, the Lewis County Democrats are the first and only local Democratic Party organization participating. We're proud that a rural county is leading the way. We're even prouder that the people who benefit won't be chosen based on politics.", 'lcd-theme'); ?></p>
             <blockquote class="mdr-pullquote">
                 <?php esc_html_e("Medical debt doesn't care how you vote. Neither does this project.", 'lcd-theme'); ?>
             </blockquote>
