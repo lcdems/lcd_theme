@@ -56,9 +56,9 @@ foreach (array(10, 25, 50, 100) as $amount) {
                 <span class="mdr-multiplier-to">up to <strong>$200</strong></span>
             </div>
             <div class="mdr-multiplier-explain">
-                <p><?php esc_html_e('How? Medical debt is often sold for pennies on the dollar after providers have been unable to collect it. That creates an unusual opportunity: instead of buying that debt to collect it, it can be purchased to forgive it.', 'lcd-theme'); ?></p>
+                <p><?php esc_html_e('How? Medical debt is often sold for pennies on the dollar after providers have been unable to collect it. That creates an unusual opportunity:', 'lcd-theme'); ?></p>
             </div>
-            <p class="mdr-multiplier-caption"><?php esc_html_e("We aren't paying medical debt. We're making it disappear.", 'lcd-theme'); ?></p>
+            <p class="mdr-multiplier-caption"><?php esc_html_e("Instead of buying that debt to collect it, it can be purchased to forgive it.", 'lcd-theme'); ?></p>
         </div>
     </section>
 
