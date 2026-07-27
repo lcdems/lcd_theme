@@ -87,7 +87,7 @@ $story_url  = 'https://dems.work/tell-my-story';
                 <p class="mdr-standalone"><?php esc_html_e('Their debt is simply gone.', 'lcd-theme'); ?></p>
             </div>
             <div class="mdr-col-media">
-                <img class="mdr-photo" src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/shutterstock_83597350-1.jpg" alt="<?php esc_attr_e('Green road sign reading Debt Relief Just Ahead against a bright sky', 'lcd-theme'); ?>" loading="lazy">
+                <img class="mdr-photo" src="https://lewiscountydemocrats.org/wp-content/uploads/2026/07/shutterstock_83597350-1-1.jpg" alt="<?php esc_attr_e('Green road sign reading Debt Relief Just Ahead against a bright sky', 'lcd-theme'); ?>" loading="lazy">
             </div>
         </div>
     </section>
