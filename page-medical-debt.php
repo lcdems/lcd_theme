@@ -36,7 +36,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
             <p class="mdr-hero-kicker"><?php esc_html_e('A Lewis County Democrats Project', 'lcd-theme'); ?></p>
             <h1 class="mdr-hero-title"><?php esc_html_e('Help Us Wipe Out Medical Debt in Lewis County', 'lcd-theme'); ?></h1>
             <p class="mdr-hero-lead">
-                <?php esc_html_e('For every $1 we raise, up to $200 in qualifying medical debt can be forgiven for our neighbors here in Lewis County and across Washington.', 'lcd-theme'); ?>
+                <?php esc_html_e('For every $1 we raise, up to $200 in qualifying medical debt can be forgiven for our neighbors.', 'lcd-theme'); ?>
             </p>
             <p class="mdr-hero-sub">
                 <?php esc_html_e('The Lewis County Democrats are leading a first-of-its-kind effort in Washington to turn small donations into life-changing relief, with support from Dems Work and Contest Every Race.', 'lcd-theme'); ?>
