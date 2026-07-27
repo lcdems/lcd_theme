@@ -62,21 +62,6 @@ foreach (array(10, 25, 50, 100) as $amount) {
         </div>
     </section>
 
-    <!-- ============ IMPACT CARDS ============ -->
-    <section class="mdr-impact">
-        <div class="mdr-container">
-            <div class="mdr-card-grid">
-
-                <div class="mdr-card">
-                    <div class="mdr-card-figure"><?php esc_html_e('Right Here at Home', 'lcd-theme'); ?></div>
-                    <p><?php esc_html_e('Money raised through this campaign is guaranteed to relieve qualifying medical debt in Washington State, with our Lewis County neighbors prioritized.', 'lcd-theme'); ?></p>
-                </div>
-            </div>
-            <div class="mdr-impact-cta">
-                <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent"><?php esc_html_e('Turn $10 Into Up To $2,000 of Relief', 'lcd-theme'); ?></a>
-            </div>
-        </div>
-    </section>
 
     <!-- ============ REAL RELIEF / NO CATCH ============ -->
     <section class="mdr-section mdr-relief">

@@ -219,51 +219,7 @@
     color: var(--mdr-accent);
 }
 
-/* ---------- Impact cards ---------- */
-.mdr-impact {
-    background: var(--mdr-paper);
-    padding: 4.5rem 0;
-}
 
-.mdr-card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    max-width: 780px;
-    margin: 0 auto;
-}
-
-.mdr-card {
-    background: #fff;
-    border-radius: 12px;
-    border-top: 5px solid var(--mdr-accent);
-    box-shadow: 0 6px 18px rgba(0, 43, 80, 0.08);
-    padding: 2rem 1.5rem;
-    text-align: center;
-}
-
-.mdr-card-figure {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: var(--mdr-navy);
-    margin-bottom: 0.75rem;
-    line-height: 1.25;
-}
-
-.mdr-card-arrow {
-    color: var(--mdr-accent);
-}
-
-.mdr-card p {
-    margin: 0;
-    color: var(--color-text-light, #666);
-}
-
-.mdr-impact-cta {
-    text-align: center;
-    margin-top: 2.5rem;
-}
 
 /* ---------- Two-column sections ---------- */
 .mdr-two-col {
