@@ -39,7 +39,7 @@ foreach (array(10, 25, 50, 100) as $amount) {
                 <?php esc_html_e('For every $1 we raise, up to $200 in qualifying medical debt can be forgiven for our neighbors.', 'lcd-theme'); ?>
             </p>
             <p class="mdr-hero-sub">
-                <?php esc_html_e('The Lewis County Democrats are leading a first-of-its-kind effort in Washington to turn small donations into life-changing relief, with support from Dems Work and Contest Every Race.', 'lcd-theme'); ?>
+                <?php esc_html_e('The Lewis County Democrats are leading a first-of-its-kind effort in Washington to turn small donations into life-changing relief.', 'lcd-theme'); ?>
             </p>
             <div class="mdr-hero-cta">
                 <a href="<?php echo $donate_url; ?>" class="mdr-button mdr-button-accent mdr-button-xl"><?php esc_html_e('Help Erase Medical Debt', 'lcd-theme'); ?></a>
