@@ -94,8 +94,8 @@ foreach (array(10, 25, 50, 100) as $amount) {
                 <h2><?php esc_html_e('Politics Should Be About Helping People', 'lcd-theme'); ?></h2>
                 <p><?php esc_html_e('We believe a local political party should do more than ask for votes.', 'lcd-theme'); ?></p>
                 <p><strong><?php esc_html_e('It should be part of the community it hopes to serve.', 'lcd-theme'); ?></strong></p>
-                <p><?php esc_html_e("You shouldn't go into debt for getting sick. But in America, that outcome is far too familiar. That's why the Lewis County Democrats are taking the lead on this project: raising money to relieve medical debt for our neighbors while shining a light on a healthcare system that leaves too many working families owing thousands of dollars simply because someone got sick.", 'lcd-theme'); ?></p>
-                <p><?php esc_html_e("Together, we can help families today while building the momentum to fix the system for good. That's how we help our neighbors, create lasting change, and ensure that getting sick no longer means falling into debt.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("That's why the Lewis County Democrats are taking the lead on this project: raising money to relieve medical debt for our neighbors while shining a light on a healthcare system that leaves too many working families owing thousands of dollars.", 'lcd-theme'); ?></p>
+                <p><?php esc_html_e("Together, we can help today while building the momentum to fix the system for good. That's how create lasting change and ensure that getting care no longer means going broke.", 'lcd-theme'); ?></p>
             </div>
         </div>
     </section>
